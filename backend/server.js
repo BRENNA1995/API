@@ -5,15 +5,7 @@ app.use(morgan('common'));
 const port = 3001
 const servidor = '127.0.0.1'
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : '127.0.0.1',
-  user     : 'me',
-  password : 'secret',
-  database : 'my_db'
-});
 
-connection.connect();
 // //POST SEM A PARTE DE ID
 // app.post('/api/produtos', (req,res) =>{
 //   req.body.id=produtos.length + 1;
