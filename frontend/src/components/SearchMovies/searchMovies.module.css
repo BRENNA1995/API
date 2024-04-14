@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 8px;
+
+}
+
+#btnSearch {
+    background-color: #b01818;
+    border-radius: 20px;
+    padding: 6px 16px;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+#btnSearch:hover {
+    background-color: #490909;
+}
+
+#btnClear {
+    background-color: #11346b;
+    border-radius: 20px;
+    padding: 6px 16px;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#btnClear:hover {
+    background-color: #16182e;
+}
+
+.container input {
+    padding: 8px 10px;
+    border-radius: 50px;
+    margin-right: 8px;
+    font-size: 18px;
+}
