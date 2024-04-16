@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "rohit-chouhan.sqlite-snippet"
+        "rohit-chouhan.sqlite-snippet",
+        "cweijan.dbclient-jdbc"
     ]
 }

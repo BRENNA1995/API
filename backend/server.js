@@ -1,10 +1,18 @@
 const express = require('express'); // Importa o módulo do Express Framework
 const app = express(); // Inicializa um objeto de aplicação Express
-const morgan = require('morgan'); 
-app.use(morgan('common'));
-const port = 3001
-const servidor = '127.0.0.1'
-
+const servidor = '127.0.0.1';
+const { Client } = require('pg')
+const client = new Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: 'brenna',
+  port: 5432,
+})
+client.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 // //POST SEM A PARTE DE ID
 // app.post('/api/produtos', (req,res) =>{
@@ -43,6 +51,6 @@ const servidor = '127.0.0.1'
 //porta 3000 minha não funciona
 
 
-app.listen(port, function () {
-  console.log(`Servidor rodando em http://${servidor}:${port}`);
- });
+// app.listen(port, function () {
+//   console.log(`Servidor rodando em http://${servidor}:${port}`);
+//  });
