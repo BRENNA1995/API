@@ -11,7 +11,7 @@ export function RootLayout() {
 			</header>
 			<Outlet />
 			<footer className={styles.footer}>
-				Copyright 2023. Todos os direitos reservados.
+				Copyright 2024. Todos os direitos reservados.
 			</footer>
 		</>
 	)

@@ -1,6 +1,12 @@
+.page {
+	display: flex;
+	flex-direction: column;
+}
+
 .movie {
 	display: flex;
 	background-color: #ffffff;
+	justify-content: center;
 }
 
 .movieInfo {
