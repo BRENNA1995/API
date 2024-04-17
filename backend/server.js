@@ -1,6 +1,8 @@
 const express = require('express'); // Importa o módulo do Express Framework
 const app = express(); // Inicializa um objeto de aplicação Express
 const servidor = '127.0.0.1';
+const port=3001;
+//Configurações e conexão com o  Banco
 const { Client } = require('pg')
 const client = new Client({
   user: 'postgres',
@@ -14,43 +16,15 @@ client.connect(function(err) {
   console.log("Connected!");
 });
 
-// //POST SEM A PARTE DE ID
-// app.post('/api/produtos', (req,res) =>{
-//   req.body.id=produtos.length + 1;
-//   produtos,push(req.body);
-//   res.status(201).json ({
-//     message: 'Produto Adicionado com sucesso',
-//     data:{ id: req.body.id }
-//   });
-//   })
+//Utilização da rota para realizar o CRUD dos comentarios 
+const routerAPI = require('./routes/routerAPI');
+app.use ('/api', routerAPI);
 
-// //GET SEM A PARTE DE ID
-// app.get('/api/produtos', (req,res) =>{
-//   res.json(produtos);
-// })
+app.use ((req, res) => {    
+    res.status(404);
+    res.send('Recurso solicitado não existe');
+})
 
-// //GET COM  A PARTE DE ID
-// app.get('/api/produtos/:id', (req,res) =>{
-//   let produto=produtos.find (p=>p.id == req.params.id);
-//   res.json(produto);
-// })
-
-// //PUT COM  A PARTE DE ID
-// app.put('/api/produtos/:id', (req,res) =>{
-//   let produto=produtos.find (p=>p.id == req.params.id);
-//   res.json(produto);
-// })
-
-// //DELETE COM  A PARTE DE ID
-// app.delete('/api/produtos/:id', (req,res) =>{
-//   let produto=produtos.find (p=>p.id == req.params.id);
-//   res.json(produto);
-// })
-
-// Inicializa o servidor HTTP na porta 3001
-//porta 3000 minha não funciona
-
-
-// app.listen(port, function () {
-//   console.log(`Servidor rodando em http://${servidor}:${port}`);
-//  });
+app.listen(port, function () {
+  console.log(`Servidor rodando em http://${servidor}:${port}`);
+});
