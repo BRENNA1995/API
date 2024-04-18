@@ -1,10 +1,23 @@
-
 import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
+import axios from 'axios'; 
 
-export function MovieComments() {
+export function MovieComments(idFilme,nomeFilme) {
+    function Adicionar() {
+        axios.post('http://localhost:3002', {idFilme})
+            .then(response => {
+            console.log(response.data);
+        })
+            .catch(error => {
+            console.error(error);
+        });
+    }
+
+
     return (
+
         <div >
+            <button id={styles.btnClear} state="reset" onClick={Adicionar}>Inserir Comentario</button>
             <div className={styles.titleGroup}>
                 <h3 className={styles.title}>Comentários</h3>
                 <span className={styles.line}></span>

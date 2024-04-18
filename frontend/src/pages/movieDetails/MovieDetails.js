@@ -29,7 +29,7 @@ export function MovieDetails() {
 					</div>
 				</div>
 			</div>
-			<MovieComments />
+			<MovieComments  idFilme={movieId}  nomeFilme={movie.title} />
 		</article>
 	)
 }
