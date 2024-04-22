@@ -17,10 +17,10 @@ const client = new Client({
   port: 5432,
 });
 
-client.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+// client.connect(function (err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+// });
 
 
 app.get('/', (req, res) => {
