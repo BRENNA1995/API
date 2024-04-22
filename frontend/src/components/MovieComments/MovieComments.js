@@ -3,52 +3,25 @@ import userImage from "../../images/user.png";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-export function MovieComments(idFilme, nomeFilme) {
+export function MovieComments(props) {
   const [data, setData] = useState({
-     idFilme: 0,
-    nomeFilme: ""
-});
-     //const [data, setData] = useState( null);
-  // useEffect(() => {
-  //     console.log(data);
-  //     const response = axios.post("http://localhost:3002/", data);
-  //     console.log(response.data); // Se quiser ver a resposta da API
-  // });
+    id: 0,
+    name: ""
+  });
 
-   useEffect(() => {
-    console.log(data);
-     // Fetching data from an external API
-      const response = axios.post("http://localhost:3002/",data);
-      console.log(response.data);
-      
-   },[data]);
-  
-  // useEffect(() => {
-  //   console.log("ok")
-  //  }, []);
-   
-  // useEffect(() => {
-  //   console.log(data.idFilme, data.nomeFilme)
-  //  }, [data]);
-
-
-  // function Adicionar() {
-  //   setData((data.idFilme = idFilme), (data.nomeFilme = nomeFilme));
-
-  //   try {
-  //     useEffect(() => {
-  //       const response = axios.post("http://localhost:3002/", data);
-  //       console.log(response.data); // Se quiser ver a resposta da API
-  //     });
-  //   } catch (error) {
-  //     console.error("Erro ao enviar o POST:", error);
-  //   }
-  // }
-
+  useEffect(() => {
+    axios.post("http://localhost:3002/", { idFilme: data.id, nomeFilme: data.name })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao enviar o POST:', error)
+      })
+  }, [data]);
 
   return (
     <div>
-      <button id={styles.btnClear} state="submit" onClick={()=>setData({ ...data,idFilme: idFilme, nomeFilme: nomeFilme})}>
+      <button id={styles.btnClear} state="submit" onClick={() => setData({ ...data, id: props.idFilme, name: props.nomeFilme })}>
         Inserir Comentario
       </button>
       <div className={styles.titleGroup}>
