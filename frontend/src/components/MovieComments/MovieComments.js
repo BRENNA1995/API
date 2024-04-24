@@ -6,9 +6,22 @@ import React, { useState, useEffect } from "react";
 export function MovieComments(props) {
   const [data, setData] = useState({
     id: 0,
-    name: ""
+    name: "",
+    comentario:"",
+    nome_usuario:""
   });
+//INSERIR COMENTARIO NO FRONTEND E ENVIAR PRO BACK
+  axios.post("http://localhost:3002/", { idFilme: data.id, nomeFilme: data.name,  comentario: data.comentario, nome_usuario: data.nome_usuario })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar o POST:', error)
+    });
 
+
+
+//BUSCAR COMENTARIO QUE JÁ EXISTE 
   useEffect(() => {
     axios.post("http://localhost:3002/", { idFilme: data.id, nomeFilme: data.name })
       .then(response => {
@@ -19,11 +32,15 @@ export function MovieComments(props) {
       })
   }, [data]);
 
+
+
+
   return (
     <div>
-      <button id={styles.btnClear} state="submit" onClick={() => setData({ ...data, id: props.idFilme, name: props.nomeFilme })}>
+      <button id={styles.btnClear} state="submit" onClick={() => setData({ ...data, id: props.idFilme, name: props.nomeFilme,comentario:  , nome_usuario:  })}>
         Inserir Comentario
       </button>
+      
       <div className={styles.titleGroup}>
         <h3 className={styles.title}>Comentários</h3>
         <span className={styles.line}></span>

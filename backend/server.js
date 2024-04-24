@@ -11,7 +11,7 @@ app.set("views", "views");
 //const URL_BASE = `http://${servidor}:3003`;
 //Configurações e conexão com o  Banco
 
-app.use ('/api', routerAPI);
+app.use ('/', routerAPI);
 
 // app.get('/', (req, res) => {
 //   res.status(200);
