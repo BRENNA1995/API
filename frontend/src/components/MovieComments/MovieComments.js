@@ -37,8 +37,8 @@ export function MovieComments(props) {
 
   return (
     <div>
-      <button id={styles.btnClear} state="submit" onClick={() => setData({ ...data, id: props.idFilme, name: props.nomeFilme,comentario:  , nome_usuario:  })}>
-        Inserir Comentario
+      <button id={styles.btnClear} state="submit" onClick={() => setData({ ...data, id: props.idFilme, name: props.nomeFilme})}>
+        Salvar
       </button>
       
       <div className={styles.titleGroup}>
@@ -54,14 +54,16 @@ export function MovieComments(props) {
         <div>
           <div className={styles.commentUserName}>Senhor Carvalho</div>
           <div className={styles.commentText}>
-            <p>
-              Após ver um filme, uma das primeiras coisas que faço é ouvir a
-              banda sonora. Acredito que a imagem e o som conseguem (pelo menos
-              na maior parte dos casos) contar tão bem a história como as
-              próprias personagens em si. E mais do que isso: parece que o filme
-              se prolonga e que o vou vendo e revendo na minha cabeça,
-              mantendo-o perto mesmo depois do fim.
-            </p>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                      <label for="textarea1">Insira o comentario sobre o filme</label>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
