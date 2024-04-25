@@ -18,8 +18,13 @@ app.use ('/', routerAPI);
 //   res.send('hello, world!');
 // });
 
-app.post('/', (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
+app.post('/ler', (req, res) => {
+
+  res.status(200);
+  console.log(req.body);
+});
+app.post('/enviar', (req, res) => {
+
   res.status(200);
   console.log(req.body);
 });
