@@ -10,9 +10,6 @@ export function RootLayout() {
 				<button id={styles.btnHome}><Link to={"/"} style={{ textDecoration: 'none' }}>Início</Link></button>
 			</header>
 			<Outlet />
-			<footer className={styles.footer}>
-				Copyright 2024. Todos os direitos reservados.
-			</footer>
 		</>
 	)
 }
