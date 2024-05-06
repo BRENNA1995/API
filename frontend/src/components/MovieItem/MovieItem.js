@@ -15,6 +15,7 @@ export function MovieItem({ movie }) {
 	// });
 
 	return (
+		
 		<div className={styles.movie}>
 			<Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
 				<MovieImage path={movie.poster_path} />

@@ -44,15 +44,3 @@
 	color: #FAE91B;
 }
 
-.footer {
-	position: fixed;
-	background: #111111;
-	text-align: center;
-	color: #ffffff;
-	font-size: 16px;
-	padding: 20px;
-	height: auto;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-}
