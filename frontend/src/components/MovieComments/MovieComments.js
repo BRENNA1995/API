@@ -12,7 +12,7 @@ export function MovieComments(props) {
     nome_usuario: ""
   });
 
-  const [dataComments, setDataComments] = useState(0)
+  //const [dataComments, setDataComments] = useState({})
   
 
   useEffect(() => {
@@ -33,16 +33,16 @@ export function MovieComments(props) {
 
   //BUSCAR COMENTARIO QUE JÁ EXISTE
 
-  useEffect(() => {    
-    axios
-      .get(`http://localhost:3002/comentarios/${props.idFilme}`).then((response) => {   
-        console.log("entrou no useEffect do get");
-        setDataComments(response.data)
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar GET:", error);
-      });
-  }, []);
+  // useEffect(() => {    
+  //   axios
+  //     .get(`http://localhost:3002/comentarios/${props.idFilme}`).then((response) => {   
+  //       console.log("entrou no useEffect do get");
+  //       setDataComments(response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.error("Erro ao buscar GET:", error);
+  //     });
+  // }, []);
   // console.log(dataComments[0].nomeUsuario) ok
   // console.log(dataComments[0].comentario) ok
 
@@ -100,7 +100,6 @@ export function MovieComments(props) {
           </button>
         </div>
       </div>
-      <ListComments listComments={dataComments} />
     </div>
   );
 }

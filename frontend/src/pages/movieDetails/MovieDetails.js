@@ -4,9 +4,16 @@ import { useGetMovieDetail } from "../../hooks/useGetMovieDetail";
 import { MovieComments } from "../../components/MovieComments/MovieComments";
 import styles from "./MovieDetails.module.css";
 
+import { ListComments } from "../../components/ListComments/ListComments";
+import { useGetComents } from "../../hooks/useGetComments";
+
 export function MovieDetails() {
 	const { movieId } = useParams();
 	const movie = useGetMovieDetail(movieId);
+	
+	const dadosComentario = useGetComents(movieId);
+	
+
 
 	return (
 		<article className={styles.page}>
@@ -29,7 +36,8 @@ export function MovieDetails() {
 						</div>
 					</div>
 				</div>
-				<MovieComments  idFilme={movieId}  nomeFilme={movie.title} />
+				<MovieComments  idFilme={movieId}  nomeFilme={movie.title}  />
+				<ListComments dados={dadosComentario} />
 		</article>
 	)
 }
