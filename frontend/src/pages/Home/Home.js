@@ -3,6 +3,8 @@ import { MoviesList } from "../../components/MoviesList/MoviesList";
 import { SearchMovies } from "../../components/SearchMovies/SearchMovies";
 import { useGetMovies } from "../../hooks/useGetMovies";
 import { useSearchMovieByTitle } from "../../hooks/useSearchMovieByTitle";
+import useGetComments from "../../hooks/useGetComments";
+
 import styles from "./Home.module.css";
 
 export function Home() {
@@ -13,6 +15,7 @@ export function Home() {
 	function handleOnSearch(movieTitle) {
 		setSearchQuery(movieTitle);
 	}
+	const dadosComentario = useGetComments(); 
 
 	return (
 	<article className={styles.page}>

@@ -1,43 +1,55 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { MovieImage } from "../../components/MovieImage/MovieImage";
 import { useGetMovieDetail } from "../../hooks/useGetMovieDetail";
 import { MovieComments } from "../../components/MovieComments/MovieComments";
 import styles from "./MovieDetails.module.css";
 
 import { ListComments } from "../../components/ListComments/ListComments";
-import { useGetComents } from "../../hooks/useGetComments";
+import useGetComments from "../../hooks/useGetComments";
 
 export function MovieDetails() {
-	const { movieId } = useParams();
-	const movie = useGetMovieDetail(movieId);
-	
-	const dadosComentario = useGetComents(movieId);
-	
+  const { movieId } = useParams();
+  const movie = useGetMovieDetail(movieId);
 
+  const coment  = useGetComments();
 
-	return (
-		<article className={styles.page}>
-				<div className={styles.movie}>
-					<MovieImage path={movie.poster_path} size={300} />
+  if (movie && coment) {
+    return (
+      <article className={styles.page}>
+        <div className={styles.movie}>
+          <MovieImage path={movie.poster_path} size={300} />
 
-					<div className={styles.movieInfo}>
-						<h1>{movie.title}</h1>
+          <div className={styles.movieInfo}>
+            <h1>{movie.title}</h1>
 
-						<div className={styles.movieDescription}>
-							{movie.overview}
-						</div>
-						<div>
-							<ul>
-								<li><span className={styles.topicInfor}>Data de lançamento: </span><span>{movie.release_date}</span></li>
-								<li><span className={styles.topicInfor}>Nota: </span><span>{movie.vote_average}</span></li>
-								<li><span className={styles.topicInfor}>Popularidade: </span><span>{movie.popularity}</span></li>
-								<li><span className={styles.topicInfor}>Duração: </span><span>{`${movie.runtime} minutos`}</span></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<MovieComments  idFilme={movieId}  nomeFilme={movie.title}  />
-				<ListComments dados={dadosComentario} />
-		</article>
-	)
+            <div className={styles.movieDescription}>{movie.overview}</div>
+            <div>
+              <ul>
+                <li>
+                  <span className={styles.topicInfor}>
+                    Data de lançamento:{" "}
+                  </span>
+                  <span>{movie.release_date}</span>
+                </li>
+                <li>
+                  <span className={styles.topicInfor}>Nota: </span>
+                  <span>{movie.vote_average}</span>
+                </li>
+                <li>
+                  <span className={styles.topicInfor}>Popularidade: </span>
+                  <span>{movie.popularity}</span>
+                </li>
+                <li>
+                  <span className={styles.topicInfor}>Duração: </span>
+                  <span>{`${movie.runtime} minutos`}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <MovieComments idFilme={movieId} nomeFilme={movie.title} />
+        <ListComments dados={coment} />
+      </article>
+    );
+  }
 }
