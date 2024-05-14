@@ -12,12 +12,12 @@ export function ListComments(props) {
 
         return (
             <ul> 
-             {dados.items.map((item, index) => (
+             {/* {dados.items.map((item, index) => (
                 <li key={index}>
                     <div>{item.nomeUsuario}</div>
                     <div>{item.comentario}</div>
                 </li>
-            )) }
+            )) } */}
             </ul>
         )
       }

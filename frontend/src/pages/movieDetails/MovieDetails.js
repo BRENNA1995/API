@@ -13,7 +13,6 @@ export function MovieDetails() {
 
   const coment  = useGetComments();
 
-  if (movie && coment) {
     return (
       <article className={styles.page}>
         <div className={styles.movie}>
@@ -51,5 +50,5 @@ export function MovieDetails() {
         <ListComments dados={coment} />
       </article>
     );
-  }
+  
 }
