@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import  MoviesInterno   from "../api/MoviesInterno" 
 
-function useGetComments() {
+function useGetComments(movieId) {
     const [coment, setComent] = useState({})
    
    useEffect(() => {
     console.log("ENTROU NO HOOKR");
-    MoviesInterno.getComents()
+    MoviesInterno.getComents(movieId)
         .then((data) => {
             setComent(data)
         })
         .catch((error) => console.error(error))
-    }, [])
+    }, [movieId])
    
     return coment
   }

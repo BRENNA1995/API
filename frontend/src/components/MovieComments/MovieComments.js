@@ -1,8 +1,7 @@
 import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { ListComments } from "../ListComments/ListComments";
+import React, { useState } from "react";
 
 export function MovieComments(props) {
   const [data, setData] = useState({
@@ -12,47 +11,32 @@ export function MovieComments(props) {
     nome_usuario: ""
   });
 
-  //const [dataComments, setDataComments] = useState({})
-  
-
-  useEffect(() => {
-    axios
-      .post("http://localhost:3002/enviar", {
-        idFilme: data.id,
-        nomeFilme: data.name,
-        comentario: data.comentario,
-        nome_usuario: data.nome_usuario,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao enviar o POST:", error);
-      });
-  }, [data]);
-
-  //BUSCAR COMENTARIO QUE JÁ EXISTE
-
-  // useEffect(() => {    
-  //   axios
-  //     .get(`http://localhost:3002/comentarios/${props.idFilme}`).then((response) => {   
-  //       console.log("entrou no useEffect do get");
-  //       setDataComments(response.data)
-  //     })
-  //     .catch((error) => {
-  //       console.error("Erro ao buscar GET:", error);
-  //     });
-  // }, []);
-  // console.log(dataComments[0].nomeUsuario) ok
-  // console.log(dataComments[0].comentario) ok
+  const handleForm = async () => {
+    console.log("ENTROU NO HANDLE ");
+    console.log(data);
+    try {
+        //event.preventDefault()
+        axios
+             .post("http://localhost:3002/enviar", {
+               idFilme2: data.id,
+               nomeFilme: data.name,
+               comentario: data.comentario,
+               nome_usuario: data.nome_usuario,
+             })
+      }
+      catch (err){
+        console.error("Erro ao enviar o POST:", err);
+      }
+      
+  }
 
   // useEffect(() => {
-  //   console.log(data);
   //   axios
-  //     .post("http://localhost:3002/ler", {
+  //     .post("http://localhost:3002/enviar", {
   //       idFilme: data.id,
   //       nomeFilme: data.name,
-  //       comentario: data.comentario        
+  //       comentario: data.comentario,
+  //       nome_usuario: data.nome_usuario,
   //     })
   //     .then((response) => {
   //       console.log(response.data);
@@ -94,8 +78,7 @@ export function MovieComments(props) {
               </div>
             </div>
           </form>
-          <button className="btn waves-effect waves-light" type="submit" name="action" onClick={() =>
-            setData({ ...data, id: props.idFilme, name: props.nomeFilme })}>SALVAR
+          <button className="btn waves-effect waves-light" type="submit" name="action" onClick={() => handleForm() }>SALVAR
             <i className="material-icons right">send</i>
           </button>
         </div>
