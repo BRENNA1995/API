@@ -6,7 +6,6 @@ const cors = require("cors");
 
 
 
-<<<<<<< HEAD
 app.use('/', routerAPI);
 
 app.get('/comentarios/:id', (req, res) => {
@@ -31,8 +30,5 @@ app.post('/enviar', (req, res) => {
 });
 
 app.listen(port, function () {
-=======
-router.listen(port, function () {
->>>>>>> 7251085a9e3ffeddb95c94ce9be6da927c621326
   console.log(`Servidor rodando em http://${servidor}:${port}`);
 });
