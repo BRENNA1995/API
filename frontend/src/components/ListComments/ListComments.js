@@ -7,6 +7,7 @@ export function ListComments(props) {
     console.log(dados) 
 
     //let listItems = 1
+<<<<<<< HEAD
     
     if (dados)   {
       console.log(12,dados)
@@ -22,6 +23,23 @@ export function ListComments(props) {
       )
     }
     
+=======
+    //if (dados !== 1)  { 
+      if (dados)   { 
+
+        return (
+            <ul> 
+             {/* {dados.items.map((item, index) => (
+                <li key={index}>
+                    <div>{item.nomeUsuario}</div>
+                    <div>{item.comentario}</div>
+                </li>
+            )) } */}
+            </ul>
+        )
+      }
+    //}
+>>>>>>> 7251085a9e3ffeddb95c94ce9be6da927c621326
 
     // return (<ul>
     //     {listComments.comentarios.map((item, index) => (
