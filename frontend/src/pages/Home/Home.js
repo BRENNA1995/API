@@ -3,14 +3,11 @@ import { MoviesList } from "../../components/MoviesList/MoviesList";
 import { SearchMovies } from "../../components/SearchMovies/SearchMovies";
 import { useGetMovies } from "../../hooks/useGetMovies";
 import { useSearchMovieByTitle } from "../../hooks/useSearchMovieByTitle";
-//import useGetComments from "../../hooks/useGetComments";
-
-import styles from "./Home.module.css";
+// import styles from "./Home.module.css";
 
 export function Home() {
 	const [searchQuery, setSearchQuery] = useState("");
 	const movies = useGetMovies();
-	console.log(13,movies)
 	const searchResults = useSearchMovieByTitle(searchQuery);
 
 	function handleOnSearch(movieTitle) {
@@ -18,13 +15,11 @@ export function Home() {
 	}
 
 	return (
-	<article className={styles.page}>
-		<body>
-			<li class="container" >
+		<article>
+			<body className="container">			
 				<SearchMovies onSearch={handleOnSearch} />
 				<MoviesList movies={searchResults.length > 0 ? searchResults : movies} />
-			</li>
-		</body>
-	</article>
-);
+			</body>
+		</article>
+	);
 }

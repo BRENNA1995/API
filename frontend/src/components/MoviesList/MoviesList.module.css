@@ -1,8 +1,8 @@
 .movies {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	padding: 60px 20px;
+	/* display: flex; */
+	/* flex-wrap: wrap; */
+	/* justify-content: space-evenly; */
+	/* padding: 60px 20px; */
 	background-color: #ffffff;
-	margin-top: 6px;
+	/* margin-top: 6px; */
 }

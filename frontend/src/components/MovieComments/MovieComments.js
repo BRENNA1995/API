@@ -14,8 +14,7 @@ export function MovieComments(props) {
   const handleForm = async () => {
     console.log("ENTROU NO HANDLE ");
     console.log(data);
-    try {
-        //event.preventDefault()
+    try {       
         axios
              .post("http://localhost:3002/enviar", {
                idFilme2: data.id,

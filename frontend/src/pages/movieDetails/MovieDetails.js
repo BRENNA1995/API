@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MovieImage } from "../../components/MovieImage/MovieImage";
 import { useGetMovieDetail } from "../../hooks/useGetMovieDetail";
@@ -12,10 +13,10 @@ export function MovieDetails() {
   const movie = useGetMovieDetail(movieId);
   console.log(13,movie.poster_path)
   const coment  = useGetComments(movieId);
-  //console.log(15,coment)
 
     return (
       <article className={styles.page}>
+        <button id={styles.btnHome}><Link to={"/"} style={{ textDecoration: 'none' }}>Início</Link></button>
         <div className={styles.movie}>
           {movie.poster_path &&  <MovieImage path={movie.poster_path} size={300} />}
           <div className={styles.movieInfo}>
@@ -48,6 +49,5 @@ export function MovieDetails() {
         <MovieComments idFilme={movieId} nomeFilme={movie.title} />
         <ListComments dados={coment} />
       </article>
-    );
-  
+    );  
 }

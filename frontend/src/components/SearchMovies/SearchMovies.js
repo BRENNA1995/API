@@ -8,17 +8,15 @@ export function SearchMovies({ onSearch }) {
         event.preventDefault();
         onSearch(searchQuery);
     }
-    function resetSearch() {
-        setSearchQuery("");
-        onSearch("");
-    }
 
     return (
         <div className={styles.container}>
-            <form onSubmit={handleOnSubmit}>
+             <form className={styles.form} onSubmit={handleOnSubmit}>
                 <input type="text" placeholder="Digite o título" onChange={(event) => setSearchQuery(event.target.value)} />
-                <button id={styles.btnSearch} type="submit">Buscar</button>
-                <button id={styles.btnClear} state="reset" onClick={resetSearch}>Limpar</button>
+                <button id={styles.btnSearch} class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action">Buscar
+                    <i class="material-icons right">search</i>
+                </button>
+
             </form>
         </div>
     )

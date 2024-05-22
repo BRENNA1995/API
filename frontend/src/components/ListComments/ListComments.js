@@ -1,7 +1,5 @@
 export function ListComments(props) {
-    console.log(props) 
     const dados = props.dados
-    console.log(dados) 
     if (dados)   {
       return (
           <ul> 
@@ -13,6 +11,5 @@ export function ListComments(props) {
           )) } 
           </ul>
       )
-    }
-    
+    }    
 }
