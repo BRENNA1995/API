@@ -17,3 +17,16 @@
 input {
     color: white;
 }
+
+@media only screen and (max-width: 900px){
+    .form {
+        margin-top: 20px;
+        position: relative;
+    }
+    input::placeholder{
+        color: rgb(71, 71, 71);
+    }
+    input {
+        color: black;
+    }
+}
