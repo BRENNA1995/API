@@ -1,6 +1,7 @@
 .page {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .movie {
@@ -16,6 +17,13 @@
 	max-width: 800px;
 }
 
+.form {
+    position: absolute;
+	top: -70px;
+	right: 10vw;
+}
+
+
 .movieInfo h1 {
 	margin-bottom: 20px;
 	font-weight: 700;
@@ -28,4 +36,16 @@ li {
 
 .topicInfor {
 	font-weight: 700;
+}
+
+@media only screen and (max-width: 500px){
+	.form {
+		display: flex;
+		justify-content: flex-start ;
+		position: relative;
+		top:0;
+		right:0;
+		margin:10px;
+
+	}
 }

@@ -16,7 +16,6 @@ export function SearchMovies({ onSearch }) {
                 <button id={styles.btnSearch} class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action">Buscar
                     <i class="material-icons right">search</i>
                 </button>
-
             </form>
         </div>
     )
