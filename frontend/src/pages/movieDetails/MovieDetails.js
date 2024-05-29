@@ -11,23 +11,25 @@ import useGetComments from "../../hooks/useGetComments";
 export function MovieDetails() {
   const { movieId } = useParams();
   const movie = useGetMovieDetail(movieId);
-  console.log(13, movie.poster_path);
   const coment = useGetComments(movieId);
+
+  const movieInfo = { fontSize: '22px', marginTop: '-20px', lineHeight: '30px', maxWidth: '800px' }
+  const movietitle = { marginBottom: '20px', fontWeight: '700', fontSize: '28px' }
 
   return (
     <article className={styles.page}>
       <div className={styles.form}>
-      <Link to={"/"}><button
+        <Link to={"/"}><button
           class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action"
         >Início<i class="material-icons right">home</i>
         </button></Link>
       </div>
-      <div className={styles.movie}>
-        {movie.poster_path && (
-          <MovieImage path={movie.poster_path} size={300} />
-        )}
-        <div className={styles.movieInfo}>
-          <h1>{movie.title}</h1>
+      <div className='container row'>
+        <div className="col s12 m7 l4">
+          {movie.poster_path && (<MovieImage path={movie.poster_path} size={300} />)}
+        </div>
+        <div className='col s12 m5 l8' style={{ ...movieInfo }}>
+          <h1 style={{ ...movietitle }}>{movie.title}</h1>
           <div className={styles.movieDescription}>{movie.overview}</div>
           <div>
             <ul>

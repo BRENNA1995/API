@@ -1,12 +1,11 @@
 .header {
 	background-color: #24272e;
 	position: relative;
-	padding: 18px 20px 26px;
+	padding: 18px 40px 26px;
 	text-align: left;
 }
 
 .header h1 {
-	/* font-family: "Lobster", sans-serif; */
 	font-family: "Black Ops One", system-ui;
 	color: #ffffff;
 	text-shadow:       
@@ -19,4 +18,14 @@
 
 .header h1 {
 	margin: 0;
+}
+
+@media only screen and (max-width: 500px){
+	.header {
+		padding: 12px 40px 14px;
+		text-align: left;
+	}
+	.header h1 {
+		font-size: 24px;	
+	}
 }

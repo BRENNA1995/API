@@ -5,3 +5,11 @@ body {
   background-color: #ffffff;
   /* background-color: #000000    ; */
 }
+
+textarea:focus {
+  border-bottom: 1px solid #00b0ff  !important;    
+}
+
+input:focus {
+  border-bottom: 1px solid #00b0ff  !important;    
+}

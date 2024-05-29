@@ -3,7 +3,6 @@ import { MoviesList } from "../../components/MoviesList/MoviesList";
 import { SearchMovies } from "../../components/SearchMovies/SearchMovies";
 import { useGetMovies } from "../../hooks/useGetMovies";
 import { useSearchMovieByTitle } from "../../hooks/useSearchMovieByTitle";
-// import styles from "./Home.module.css";
 
 export function Home() {
   const [searchQuery, setSearchQuery] = useState("");

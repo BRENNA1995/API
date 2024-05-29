@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { MovieImage } from "../MovieImage/MovieImage";
-// import styles from "./movieItem.module.css";
 
 export function MovieItem({ movie }) {
 	return (

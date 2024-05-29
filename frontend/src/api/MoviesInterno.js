@@ -6,9 +6,7 @@ import { api2 } from "../config/http";
 //   }
 // }
 const getComents = async  (movieId) => {
-	console.log("ENTROU NO axios ");
 	const {data}= await  api2.get(`comentarios/${movieId}`); 
-	console.log(data);
 	return data 
 }
 
