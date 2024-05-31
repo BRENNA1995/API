@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { prismaClient } from "../database/prismaclient";
 
-export class ExcluirComentarioController {
+export class ExcluirFilmeController {
   async handle(request: Request, response: Response) {
-    const { id } = request.params;
+    const { filme_id } = request.params;
 
-    const comentarioid = await prismaClient.comentario.delete({
+//Verificar se o id existe antes de excluir 
+
+     await prismaClient.filme.delete({
       where: {
-        id,
+        filme_id,
       }
     });
 

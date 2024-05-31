@@ -5,7 +5,12 @@ export class AdicionarComentarioController {
   async handle(request: Request, response: Response) {
     const {nome_usuario , comentario_inserido , comentario_filme_id, filme_id} = request.body;
 
-    const comentario = await prismaClient.comentario.create({
+//Verificar se o filme existe
+//senão existe -> acrescentar
+//se existe -> acrescentar
+
+
+    await prismaClient.comentario.create({
       data: {
         comentario_inserido , nome_usuario ,comentario_filme_id,
           filme:{
@@ -17,6 +22,6 @@ export class AdicionarComentarioController {
  
     });
 
-    return response.json(comentario);
+    return response.status(201);
   }
 }

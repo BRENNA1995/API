@@ -13,6 +13,11 @@ CREATE TABLE "Filme" (
     "filme_id" TEXT NOT NULL,
     "nomefilme" TEXT NOT NULL,
     "comentario_id" TEXT NOT NULL,
+    "sinopse" TEXT NOT NULL,
+    "data_lancamento" TIMESTAMP(3) NOT NULL,
+    "Nota" TEXT NOT NULL,
+    "popularidade" TEXT NOT NULL,
+    "duracao" TEXT NOT NULL,
 
     CONSTRAINT "Filme_pkey" PRIMARY KEY ("filme_id")
 );

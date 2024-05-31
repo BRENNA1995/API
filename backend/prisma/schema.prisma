@@ -16,11 +16,15 @@ model Comentario {
 }
 
 model Filme {
-	  filme_id          String     @id   @unique
+	  filme_id          String             @id   @unique
     comentario  		  Comentario        @relation(fields: [comentario_id], references: [comentario_filme_id])
     nomefilme         String
     comentario_id     String 
-    
+    sinopse           String
+    data_lancamento   DateTime
+    Nota              String 
+    popularidade      String
+    duracao           String  
 }
 
 
