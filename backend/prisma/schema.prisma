@@ -7,22 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Filme {
-    comentario_filme_id  String @id   @unique
-    nomefilme            String
-    comentario  Comentario[]  
-}
-
-
 model Comentario {
-  id                        String     @id   @default(uuid())
+  comentario_filme_id       String     @id   @default(uuid())
   nome_usuario              String
-  comentario_inserido                String
+  comentario_inserido       String
   data_inseriu_comentario   DateTime  @default(now())
-  comentario_filme_id       String
-  comentario_filme_id2      Filme @relation(fields: [comentario_filme_id], references: [comentario_filme_id])
+  filme                      Filme[]
 }
 
+model Filme {
+	  filme_id          String     @id   @unique
+    comentario  		  Comentario        @relation(fields: [comentario_id], references: [comentario_filme_id])
+    nomefilme         String
+    comentario_id     String 
+    
+}
 
 
 

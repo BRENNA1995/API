@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { AdicionarComentarioController } from "../controllers/AdicionarComentarioController";
 import { ExcluirComentarioController } from "../controllers/ExcluirComentarioController";
-import { VisualizarComentarioController } from "../controllers/VisualizarComentarioController";
+import { VisualizarTodosComentarioController } from "../controllers/VisualizarTodosComentarioController";
 
 const router = Router();
 
-const GetComentario = new VisualizarComentarioController();
+const GetComentario = new VisualizarTodosComentarioController();
 const AddComentario = new AdicionarComentarioController();
 const deletarComentario = new ExcluirComentarioController();
 
