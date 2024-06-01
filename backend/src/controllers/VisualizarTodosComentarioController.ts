@@ -3,11 +3,11 @@ import { prismaClient } from "../database/prismaclient";
 
 export class VisualizarTodosComentarioController {
   async handle(request: Request, response: Response) {
-    const { comentario_filme_id } = request.params;
+    const { comentario_filme_id, filme_id } = request.params;
 
     const filmeid = await prismaClient.comentario.findMany({
       where: {
-        comentario_filme_id,
+        comentario_filme_id,filme_id,
       }
     });
 

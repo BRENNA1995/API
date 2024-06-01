@@ -3,11 +3,11 @@ import { prismaClient } from "../database/prismaclient";
 
 export class ExcluirComentarioController {
   async handle(request: Request, response: Response) {
-    const { id } = request.params;
+    const { comentario_filme_id, filme_id} = request.params;
 
     const comentarioid = await prismaClient.comentario.delete({
       where: {
-        id,
+        comentario_filme_id,filme_id,
       }
     });
 

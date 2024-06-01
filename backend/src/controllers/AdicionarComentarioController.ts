@@ -1,10 +1,12 @@
 import { prismaClient } from "../database/prismaclient";
 import { Request, Response } from "express";
+//import { AdicionarFilmeController } from "../AdicionarFilmeController";
 
 export class AdicionarComentarioController {
   async handle(request: Request, response: Response) {
-    const {nome_usuario , comentario_inserido , comentario_filme_id, filme_id} = request.body;
+    const {nome_usuario , comentario_inserido ,  filme_id} = request.body;
 
+    
 //Verificar se o filme existe
 //senão existe -> acrescentar
 //se existe -> acrescentar
@@ -12,13 +14,9 @@ export class AdicionarComentarioController {
 
     await prismaClient.comentario.create({
       data: {
-        comentario_inserido , nome_usuario ,comentario_filme_id,
-          filme:{
-            create:[ filme_id],
+        comentario_inserido , nome_usuario ,filme_id,
             
           },
-
-      },
  
     });
 

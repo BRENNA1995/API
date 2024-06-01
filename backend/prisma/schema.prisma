@@ -11,20 +11,21 @@ model Comentario {
   comentario_filme_id       String     @id   @default(uuid())
   nome_usuario              String
   comentario_inserido       String
-  data_inseriu_comentario   DateTime  @default(now())
-  filme                      Filme[]
+  data_inseriu_comentario   DateTime          @default(now())
+  filme_id                  String   
+  filme  		                Filme       @relation(fields: [filme_id], references: [filme_id]) 
 }
 
 model Filme {
 	  filme_id          String             @id   @unique
-    comentario  		  Comentario        @relation(fields: [comentario_id], references: [comentario_filme_id])
-    nomefilme         String
-    comentario_id     String 
+    nomefilme         String 
     sinopse           String
     data_lancamento   DateTime
     Nota              String 
     popularidade      String
-    duracao           String  
+    duracao           String
+    imageUrl          String
+    comentario        Comentario[] 
 }
 
 
