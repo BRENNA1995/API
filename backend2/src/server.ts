@@ -2,7 +2,9 @@ import fastify, { FastifyInstance } from "fastify";
 import { filmRoutes } from './routes/filme.routes'
 import { commentRoutes } from "./routes/comment.routes";
 
-const server: FastifyInstance = fastify({})
+const server: FastifyInstance = fastify({
+   logger: true 
+})
 
 server.register(filmRoutes,{
    prefix: '/filmes'
