@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Filme {
+   id             String @id @default(uuid())
+   title          String      @unique
+   sinopse        String
+   poster         String
+   imdbVotes      Float
+   imdbRating     Int
+   createdAt      DateTime
+   Comments       Comment[]
+
+  @@map("filmes")
+}
+
+model Comment {
+   id          Int @id @default(autoincrement())
+   username    String   @unique
+   comment     String
+   filmeId     String
+   createdAt   DateTime @default(now())
+   filme       Filme @relation(fields: [filmeId], references: [id])
+
+   @@map("comentarios")
+}

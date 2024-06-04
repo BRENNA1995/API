@@ -14,7 +14,7 @@ export function MovieComments(props) {
   const handleForm = async () => {
     try {
       axios
-        .post("http://localhost:3002/enviar", {
+        .post("http://localhost:3003/comentarios", {
           idFilme2: data.id,
           nomeFilme: data.name,
           comentario: data.comentario,
