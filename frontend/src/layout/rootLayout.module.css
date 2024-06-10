@@ -1,7 +1,10 @@
 .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	background-color: #24272e;
 	position: relative;
-	padding: 18px 40px 26px;
+	padding: 18px 40px 20px;
 	text-align: left;
 }
 

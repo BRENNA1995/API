@@ -20,7 +20,7 @@ export function MovieDetails() {
     <article className={styles.page}>
       <div className={styles.form}>
         <Link to={"/"}><button
-          class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action"
+          className="btn waves-effect waves-light light-blue accent-3" type="submit" name="action"
         >Início<i class="material-icons right">home</i>
         </button></Link>
       </div>

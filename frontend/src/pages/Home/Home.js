@@ -14,13 +14,11 @@ export function Home() {
   }
 
   return (
-    <article>
-      <body className="container">
+    <article className="container">      
         <SearchMovies onSearch={handleOnSearch} />
         <MoviesList
           movies={searchResults.length > 0 ? searchResults : movies}
-        />
-      </body>
+        />     
     </article>
   );
 }
