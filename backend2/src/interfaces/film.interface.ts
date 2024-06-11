@@ -29,5 +29,6 @@ export interface FilmRepository {
    findAll(): Promise<Film[]>
    findByTitle(title: string): Promise<Film | null>
    delete(title: string): Promise<FilmCreated>
+   //findByTitleDetail(title: string): Promise<Film >
 }
 

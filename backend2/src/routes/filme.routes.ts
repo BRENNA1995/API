@@ -11,8 +11,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
       reply.send(data);
    })
 
-   fastify.get<{Params: ParamsType}>('/:id', async(req, reply)=> {
-      const data = await filmUsecase.findUniqueFilm(req.params.id)
+   fastify.get<{Body: FilmCreated}>('/title', async(req, reply)=> {
+      const data = await filmUsecase.findByTitle(req.body.title)
       reply.send(data)
    })
 
@@ -61,6 +61,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
          })   
    })
 
-   
+
   
 }
