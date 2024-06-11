@@ -18,26 +18,17 @@ class FilmRepositoryPrisma implements FilmRepository{
       return result;
    }
 
-   async findByIdOrTitle(id: string, title: string): Promise<Film | null> {
+   async findByTitle(title: string): Promise<Film | null> {
       const result = await prisma.filme.findFirst({
-         where:{
-            OR:[
-               {
-                  id,                  
-               },
-               {
-                  title,
-               }
-            ],                           
-         },         
+         where:{title },         
       })
       return result;
    }
    
-   async delete(id: string): Promise<FilmCreated> {
+   async delete(title: string): Promise<FilmCreated> {
       const result = await prisma.filme.delete({
          where: {
-            id
+            title
          }
       })
       return result;
@@ -47,5 +38,5 @@ class FilmRepositoryPrisma implements FilmRepository{
 
 
 //update 
+export { FilmRepositoryPrisma }; 
 
-export { FilmRepositoryPrisma };

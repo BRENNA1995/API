@@ -45,7 +45,7 @@ export async function filmRoutes(fastify: FastifyInstance) {
          })
          .then(async response => {
             const { results } = await response.json()
-            results?.forEach(async (film: FilmApi) => {            
+            results?.forEach(async (film: FilmApi) => { 
                await filmUsecase.create({
                   title: film.title,
                   sinopse: film.overview,
@@ -61,12 +61,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
          })   
    })
 
-   fastify.delete<{ Params: { id: string } }>('/:id', async (req, reply)=> {
-      const { id } = req.params
-      if (id){
-         await filmUsecase.delete(id);
-         return reply.status(204)
-      }
-   })
+   
   
 }

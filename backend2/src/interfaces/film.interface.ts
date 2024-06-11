@@ -16,8 +16,7 @@ export interface FilmCreated {
    imdbRating: number,
    createdAt: Date
 }
-export interface FilmFindByIdOrTitle {
-   id: string,
+export interface FilmfindByTitle {
    title: string,
 }
 
@@ -28,7 +27,7 @@ export interface ParamsType {
 export interface FilmRepository {
    create(data: FilmCreated): Promise<Film>
    findAll(): Promise<Film[]>
-   findByIdOrTitle(id?: string, title?: string): Promise<Film | null>
-   delete(id: string): Promise<FilmCreated>
+   findByTitle(title: string): Promise<Film | null>
+   delete(title: string): Promise<FilmCreated>
 }
 

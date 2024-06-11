@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 export function MovieComments(props) {
   const [data, setData] = useState({
-    id: 0,
+    id: "",
     name: "",
     comentario: "",
     nome_usuario: ""
@@ -14,11 +14,10 @@ export function MovieComments(props) {
   const handleForm = async () => {
     try {
       axios
-        .post("http://localhost:3003/comentarios", {
-          idFilme2: data.id,
-          nomeFilme: data.name,
-          comentario: data.comentario,
-          nome_usuario: data.nome_usuario,
+        .post("http://localhost:3003/new", {
+          filmeId: data.id,
+          coment: data.comentario,
+          username: data.nome_usuario,
         })
     }
     catch (err) {

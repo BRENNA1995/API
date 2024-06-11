@@ -12,16 +12,11 @@ class FilmuseCase {
       const result = await this.filmRepository.findAll()
       return result
    }
-
-   async findUniqueFilm(id: string): Promise<Film | null>{
-      const result = await this.filmRepository.findByIdOrTitle(id)
-      return result;
-   }
    
    async create(data: FilmCreated): Promise<Film>{
-      const verifyFilmExists = await this.filmRepository.findByIdOrTitle(data.title)
+      const verifyFilmExists = await this.filmRepository.findByTitle(data.title)
       if(verifyFilmExists) {
-         throw new Error('Film already exists');
+         throw new Error('Filme já existe');
       }
 
       const result = await this.filmRepository.create(data)
