@@ -1,5 +1,5 @@
 export interface FilmApi {
-   id: string,
+   id: number,
    title: string,
    overview: string,
    popularity: number,
@@ -7,6 +7,5 @@ export interface FilmApi {
    vote_average: number,
    original_language: string,
    release_date: Date,
-   vote_count: number
-
+   vote_count: number,
 }

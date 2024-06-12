@@ -11,8 +11,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
       reply.send(data);
    })
 
-   fastify.get<{Body: FilmCreated}>('/title', async(req, reply)=> {
-      const data = await filmUsecase.findByTitle(req.body.title)
+   fastify.get<{Body: FilmCreated}>('/:id', async(req, reply)=> {
+      const data = await filmUsecase.findById(req.body.id) 
       reply.send(data)
    })
 
@@ -20,6 +20,7 @@ export async function filmRoutes(fastify: FastifyInstance) {
 
       try {
          await filmUsecase.create({
+            id: req.body.id,
             title: req.body.title,
             sinopse: req.body.sinopse,
             imdbVotes: req.body.imdbVotes,
@@ -44,9 +45,12 @@ export async function filmRoutes(fastify: FastifyInstance) {
          }
          })
          .then(async response => {
+         
             const { results } = await response.json()
             results?.forEach(async (film: FilmApi) => { 
+               console.log(51, film) 
                await filmUsecase.create({
+                  id: film.id,
                   title: film.title,
                   sinopse: film.overview,
                   imdbVotes: film.vote_average,

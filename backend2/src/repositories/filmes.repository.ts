@@ -18,9 +18,9 @@ class FilmRepositoryPrisma implements FilmRepository{
       return result;
    }
 
-   async findByTitle(title: string): Promise<Film | null> {
+   async findById(id: number): Promise<Film | null> {
       const result = await prisma.filme.findFirst({
-         where:{title },         
+         where:{id },         
       })
       return result;
    }

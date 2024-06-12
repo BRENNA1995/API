@@ -1,6 +1,6 @@
 export interface Comment {
    id: number,
-   username: string,
+   usuarioId: number,
    comment: string,
    createdAt: Date,
    filmeId: string,
@@ -8,7 +8,7 @@ export interface Comment {
 }
 
 export interface CommentInsert {
-   username: string,
+   usuarioId: number,
    comment: string,
    filmeId: string,
 }
