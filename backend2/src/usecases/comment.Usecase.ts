@@ -13,7 +13,7 @@ class CommentUsecase {
    }
 
    async createComment(data: CommentInsert){
-      if (data.filmeId == null || data.filmeId == "" || data.username == null || data.username == "" ||
+      if (data.filmeId == null || data.filmeId == "" || data.usuarioId == null || data.usuarioId == "" ||
       data.filmeId == null || data.filmeId == ""){
          return {
             statuscode: 400,

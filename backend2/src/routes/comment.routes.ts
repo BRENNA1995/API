@@ -13,6 +13,7 @@ export async function commentRoutes(fastify: FastifyInstance){
    })
 
    fastify.post<{ Body: CommentInsert}>('/new', async (req, reply)=> {
+      
       const response = await commentUsecase.createComment(req.body);
       
       if(response.statuscode == 201){

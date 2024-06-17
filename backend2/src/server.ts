@@ -1,6 +1,7 @@
 import fastify, { FastifyInstance } from "fastify";
 import { filmRoutes } from './routes/filme.routes'
 import { commentRoutes } from "./routes/comment.routes";
+import { usuarioRoutes } from "./routes/usuario.routes";
 
 const server: FastifyInstance = fastify({
    logger: true 
@@ -12,6 +13,10 @@ server.register(filmRoutes,{
 
 server.register(commentRoutes, {
    prefix: '/comentarios'
+});
+
+server.register(usuarioRoutes, {
+   prefix: '/usuarios'
 });
 
 server.listen(
