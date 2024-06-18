@@ -4,17 +4,16 @@ import { CommentRepositoryPrisma } from "../repositories/comments.repository";
 class CommentUsecase {
    private commentRepository: CommentsRepository
    constructor(){
-      this.commentRepository = new CommentRepositoryPrisma();
+      this.commentRepository = new CommentRepositoryPrisma(); 
    }
 
-   async findAllComments(){
-      const result = await this.commentRepository.findAll();
+   async findAllComments(id: number){
+      const result = await this.commentRepository.findAll(id);
       return result;
    }
 
    async createComment(data: CommentInsert){
-      if (data.filmeId == null || data.filmeId == "" || data.usuarioId == null || data.usuarioId == "" ||
-      data.filmeId == null || data.filmeId == ""){
+      if (data.filmeId == null || data.usuarioId == null || data.filmeId == null){
          return {
             statuscode: 400,
             messageError: 'Bad request',

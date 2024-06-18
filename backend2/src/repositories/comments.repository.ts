@@ -2,8 +2,10 @@ import { prisma } from "../database/prisma-client";
 import { Comment, CommentInsert, CommentsRepository } from "../interfaces/comment.interface";
 
 class CommentRepositoryPrisma implements CommentsRepository{
-   async findAll(): Promise<Comment[]> {
-      const result = await prisma.comment.findMany()
+   async findAll(id: number): Promise<Comment[]> {
+      const result = await prisma.comment.findMany({where: {
+         filmeId: id
+      }})
       return result;
    }
    async create(data: CommentInsert): Promise<Comment> {

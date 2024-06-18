@@ -20,14 +20,14 @@ class usuarioRepositoryPrisma implements UsuarioRepository{
 
    async findById(id: number): Promise<usuario | null> {
       const result = await prisma.usuario.findFirst({
-         where:{id: Number(id) },         
+         where:{id },         
       })
       return result;
    }
   
    async updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null> {
     const result = await prisma.usuario.update({
-        where: { id: Number(id) },
+        where: { id},
         data: {
             status: data.status
         },
@@ -37,7 +37,7 @@ class usuarioRepositoryPrisma implements UsuarioRepository{
 
     async updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null> {
         const result = await prisma.usuario.update({
-            where: { id: Number(id) },
+            where: { id },
             data: {
                 isAdmin: data.isAdmin
             },
@@ -48,5 +48,4 @@ class usuarioRepositoryPrisma implements UsuarioRepository{
 }
 
 
-//update 
 export { usuarioRepositoryPrisma }; 

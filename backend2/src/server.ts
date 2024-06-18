@@ -1,10 +1,16 @@
 import fastify, { FastifyInstance } from "fastify";
 import { filmRoutes } from './routes/filme.routes'
-import { commentRoutes } from "./routes/comment.routes";
+import { commentRoutes} from './routes/comment.routes'
 import { usuarioRoutes } from "./routes/usuario.routes";
+import  cors from "@fastify/cors"  
 
 const server: FastifyInstance = fastify({
    logger: true 
+})
+
+server.register(cors ,{
+   origin: '*',
+   methods: [ 'GET']
 })
 
 server.register(filmRoutes,{
@@ -12,12 +18,12 @@ server.register(filmRoutes,{
 });
 
 server.register(commentRoutes, {
-   prefix: '/comentarios'
-});
+   prefix: '/filmes/:id/comentarios'
+ } );
 
-server.register(usuarioRoutes, {
-   prefix: '/usuarios'
-});
+// server.register(usuarioRoutes, {
+//      prefix: '/usuarios'
+//   });
 
 server.listen(
    {
@@ -25,3 +31,5 @@ server.listen(
    }, 
    ()=> console.log('Server executing in port 3003'),
 );
+
+console.log(29)

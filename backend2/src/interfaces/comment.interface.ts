@@ -3,18 +3,18 @@ export interface Comment {
    usuarioId: number,
    comment: string,
    createdAt: Date,
-   filmeId: string,
+   filmeId: number,
 
 }
 
 export interface CommentInsert {
    usuarioId: number,
    comment: string,
-   filmeId: string,
+   filmeId: number,
 }
 
 export interface CommentsRepository{
-   findAll(): Promise<Comment[]>
+   findAll(id: number): Promise<Comment[]>
    create(data: CommentInsert): Promise<Comment>
    delete(id: number): Promise<Comment>
 }
