@@ -13,6 +13,8 @@ export function MovieDetails() {
   const movie = useGetMovieDetail(movieId);
   const coment = useGetComments(movieId);
 
+  console.log(movie)
+
   const movieInfo = { fontSize: '22px', marginTop: '-20px', lineHeight: '30px', maxWidth: '800px' }
   const movietitle = { marginBottom: '20px', fontWeight: '700', fontSize: '28px' }
 
@@ -35,15 +37,15 @@ export function MovieDetails() {
             <ul>
               <li>
                 <span className={styles.topicInfor}>Data de lançamento: </span>
-                <span>{movie.release_date}</span>
+                <span>{movie.createdAt}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Nota: </span>
-                <span>{movie.vote_average}</span>
+                <span>{movie.imdbVotes}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Popularidade: </span>
-                <span>{movie.popularity}</span>
+                <span>{movie.imdbRating}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Duração: </span>
@@ -58,3 +60,24 @@ export function MovieDetails() {
     </article>
   );
 }
+
+/*
+<ul>
+            <li>
+              <span className={styles.topicInfor}>Data de lançamento: </span>
+              <span>{movie.release_date}</span>
+            </li>
+            <li>
+              <span className={styles.topicInfor}>Nota: </span>
+              <span>{movie.vote_average}</span>
+            </li>
+            <li>
+              <span className={styles.topicInfor}>Popularidade: </span>
+              <span>{movie.popularity}</span>
+            </li>
+            <li>
+              <span className={styles.topicInfor}>Duração: </span>
+              <span>{`${movie.runtime} minutos`}</span>
+            </li>
+          </ul>
+*/

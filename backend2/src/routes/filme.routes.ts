@@ -6,17 +6,19 @@ import { FilmCreated, ParamsType } from "../interfaces/film.interface";
 export async function filmRoutes(fastify: FastifyInstance) {
    const filmUsecase = new FilmuseCase()
 
-   fastify.get('/', async (req, reply)=> {
+   fastify.get('/', async (req, reply) => {
       const data = await filmUsecase.findAllFilms()
       reply.send(data);
    })
 
-   fastify.get<{Params: FilmCreated}>('/:id', async(req, reply)=> {
-      const data = await filmUsecase.findById( Number (req.params.id) )
+   fastify.get<{ Params: FilmCreated }>('/:id', async (req, reply) => {
+      //TODO: chamar o imdb novamente passando o id 
+      //salvar no banco
+      const data = await filmUsecase.findById(Number(req.params.id))
       reply.send(data)
    })
 
-   fastify.post<{Body: FilmCreated}>('/new', async(req, reply)=> {
+   fastify.post<{ Body: FilmCreated }>('/new', async (req, reply) => {
 
       try {
          await filmUsecase.create({
@@ -29,26 +31,26 @@ export async function filmRoutes(fastify: FastifyInstance) {
             createdAt: new Date(req.body.createdAt)
          })
          reply.status(204)
-         
+
       } catch (error) {
-         reply.send(error)         
+         reply.send(error)
       }
 
    })
 
-   fastify.post('/api', async(req, reply)=> {
+   fastify.post('/api', async (req, reply) => {
 
       await fetch('https://api.themoviedb.org/3/movie/popular', {
-         headers:{
+         headers: {
             'Content-type': 'application/json',
-            'Authorization': `Bearer ${process.env.API_TOKEN}`, 
+            'Authorization': `Bearer ${process.env.API_TOKEN}`,
          }
-         })
+      })
          .then(async response => {
-         
+
             const { results } = await response.json()
-            results?.forEach(async (film: FilmApi) => { 
-               console.log(51, film) 
+            results?.forEach(async (film: FilmApi) => {
+               console.log(51, film)
                await filmUsecase.create({
                   id: film.id,
                   title: film.title,
@@ -57,14 +59,14 @@ export async function filmRoutes(fastify: FastifyInstance) {
                   imdbRating: film.vote_count,
                   poster: film.poster_path,
                   createdAt: new Date(film.release_date)
-               })               
-               
+               })
+
             });
             reply.status(204)
-            
-         })   
+
+         })
    })
 
 
-  
+
 }

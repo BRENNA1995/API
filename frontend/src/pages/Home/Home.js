@@ -16,9 +16,7 @@ export function Home() {
   return (
     <article className="container">      
         <SearchMovies onSearch={handleOnSearch} />
-        <MoviesList
-          movies={searchResults.length > 0 ? searchResults : movies}
-        />     
+        <MoviesList movies={searchResults.length > 0 ? searchResults : movies} />     
     </article>
   );
 }
