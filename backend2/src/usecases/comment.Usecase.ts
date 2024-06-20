@@ -3,17 +3,15 @@ import { CommentRepositoryPrisma } from "../repositories/comments.repository";
 
 class CommentUsecase {
    private commentRepository: CommentsRepository
-   constructor(){
-      this.commentRepository = new CommentRepositoryPrisma(); 
+   constructor() {
+      this.commentRepository = new CommentRepositoryPrisma();
    }
-
-   async findAllComments(id: number){
+   async findAllComments(id: number) {
       const result = await this.commentRepository.findAll(id);
       return result;
    }
-
-   async createComment(data: CommentInsert){
-      if (data.filmeId == null || data.usuarioId == null || data.filmeId == null){
+   async createComment(data: CommentInsert) {
+      if (data.filmeId == null || data.usuarioId == null || data.filmeId == null) {
          return {
             statuscode: 400,
             messageError: 'Bad request',
@@ -21,20 +19,17 @@ class CommentUsecase {
             body: {}
          }
       }
-      
       const result = await this.commentRepository.create(data);
       return {
          statuscode: 201,
          messageError: '',
          message: 'Created',
          body: { result }
-         };
+      };
    }
-
-   async deleteComment(id: number){      
+   async deleteComment(id: number) {
       const result = await this.commentRepository.delete(id);
       return result;
    }
 }
-
 export { CommentUsecase }

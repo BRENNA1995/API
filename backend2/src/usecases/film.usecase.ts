@@ -4,20 +4,17 @@ import { FilmRepositoryPrisma } from "../repositories/filmes.repository";
 class FilmuseCase {
    private filmRepository: FilmRepository
 
-   constructor(){
+   constructor() {
       this.filmRepository = new FilmRepositoryPrisma()
    }
-
-   async findAllFilms(): Promise<Film[]>{
+   async findAllFilms(): Promise<Film[]> {
       const result = await this.filmRepository.findAll()
       return result
    }
-
    async findById(id: number): Promise<Film | null> {
       const result = await this.filmRepository.findById(id)
       return result;
    }
-
    // async findByIdDetail(title: string): Promise<Film> {
    //    const verifyFilmExists = await this.filmRepository.findById(title)
    //    const start = new Date(Date.now());
@@ -29,17 +26,15 @@ class FilmuseCase {
    //    return result;
    // } 
 
-   async create(data: FilmCreated): Promise<Film>{
+   async create(data: FilmCreated): Promise<Film> {
       const verifyFilmExists = await this.filmRepository.findById(data.id)
-      if(verifyFilmExists) {
+      if (verifyFilmExists) {
          throw new Error('Filme já existe');
       }
-
       const result = await this.filmRepository.create(data)
       return result;
    }
-
-   async delete(id: string): Promise<FilmCreated>{
+   async delete(id: string): Promise<FilmCreated> {
       const result = await this.filmRepository.delete(id)
       return result;
    }

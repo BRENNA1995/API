@@ -10,9 +10,6 @@ export class MoviesService {
 	static getMovieDetail(movieId) {
 		return api.get(`filmes/${movieId}`);
 	}
-	// static getMovieDetail(movieId) {
-	// 	return api.get(`movie/${movieId}`);
-	// }
 	static searchByMovieTitle(movieTitle) {
 		return api.get("search/movie", {
 			params: {
@@ -20,4 +17,7 @@ export class MoviesService {
 			}
 		});
 	}
+	static getComments(movieId) {
+		return api.get(`filmes/${movieId}/comentarios`);
+	}	
 }

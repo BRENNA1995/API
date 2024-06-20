@@ -10,16 +10,25 @@ export async function filmRoutes(fastify: FastifyInstance) {
       const data = await filmUsecase.findAllFilms()
       reply.send(data);
    })
-
    fastify.get<{ Params: FilmCreated }>('/:id', async (req, reply) => {
       //TODO: chamar o imdb novamente passando o id 
+      console.log(req.params.id)
+
+      await fetch(`https://api.themoviedb.org/3/movie/${req.params.id}`, {
+         headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${process.env.API_TOKEN}`,
+         }
+      }).then(async response => {
+         const { results } = await response.json()
+         console.log(results)
+         reply.status(200)
+      })
       //salvar no banco
       const data = await filmUsecase.findById(Number(req.params.id))
       reply.send(data)
    })
-
    fastify.post<{ Body: FilmCreated }>('/new', async (req, reply) => {
-
       try {
          await filmUsecase.create({
             id: req.body.id,
@@ -31,13 +40,10 @@ export async function filmRoutes(fastify: FastifyInstance) {
             createdAt: new Date(req.body.createdAt)
          })
          reply.status(204)
-
       } catch (error) {
          reply.send(error)
       }
-
    })
-
    fastify.post('/api', async (req, reply) => {
 
       await fetch('https://api.themoviedb.org/3/movie/popular', {
@@ -47,7 +53,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
          }
       })
          .then(async response => {
-
             const { results } = await response.json()
             results?.forEach(async (film: FilmApi) => {
                console.log(51, film)
@@ -63,10 +68,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
 
             });
             reply.status(204)
-
          })
    })
-
-
-
 }

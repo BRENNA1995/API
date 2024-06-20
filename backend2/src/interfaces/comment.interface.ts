@@ -4,25 +4,21 @@ export interface Comment {
    comment: string,
    createdAt: Date,
    filmeId: number,
-
 }
-
+//FIXME: adicionar usuario: Usuario,
 export interface CommentInsert {
    usuarioId: number,
    comment: string,
    filmeId: number,
 }
-
-export interface CommentsRepository{
+export interface CommentsRepository {
    findAll(id: number): Promise<Comment[]>
    create(data: CommentInsert): Promise<Comment>
    delete(id: number): Promise<Comment>
 }
-
 export interface CommentDelete {
    id: number
 }
-
 export interface CreatedCommentReturn {
    statuscode: number,
    messageError: string,

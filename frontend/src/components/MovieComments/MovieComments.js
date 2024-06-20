@@ -11,10 +11,10 @@ export function MovieComments(props) {
     nome_usuario: ""
   });
 
-  const handleForm = async () => {
+  const handleForm = () => {
     try {
       axios
-        .post("http://localhost:3003/new", {
+        .post(`http://localhost:3003/filmes/${props.filmeId}/comentarios`, {
           filmeId: data.id,
           coment: data.comentario,
           username: data.nome_usuario,

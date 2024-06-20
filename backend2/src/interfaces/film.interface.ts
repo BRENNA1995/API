@@ -5,11 +5,10 @@ export interface Film {
    poster: string,
    imdbVotes: number,
    imdbRating: number,
-   createdAt: Date, 
+   createdAt: Date,
 }
-
 export interface FilmCreated {
-   id: number, 
+   id: number,
    title: string,
    sinopse: string,
    imdbVotes: number,
@@ -20,11 +19,9 @@ export interface FilmCreated {
 export interface FilmfindById {
    id: number,
 }
-
 export interface ParamsType {
    id: string
 }
-
 export interface FilmRepository {
    create(data: FilmCreated): Promise<Film>
    findAll(): Promise<Film[]>
@@ -32,4 +29,3 @@ export interface FilmRepository {
    delete(title: string): Promise<FilmCreated>
    //findByIdDetail(title: string): Promise<Film >
 }
-

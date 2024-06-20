@@ -6,14 +6,10 @@ import { MovieComments } from "../../components/MovieComments/MovieComments";
 import styles from "./MovieDetails.module.css";
 
 import { ListComments } from "../../components/ListComments/ListComments";
-import useGetComments from "../../hooks/useGetComments";
 
 export function MovieDetails() {
   const { movieId } = useParams();
-  const movie = useGetMovieDetail(movieId);
-  const coment = useGetComments(movieId);
-
-  console.log(movie)
+  const movie = useGetMovieDetail(movieId);   
 
   const movieInfo = { fontSize: '22px', marginTop: '-20px', lineHeight: '30px', maxWidth: '800px' }
   const movietitle = { marginBottom: '20px', fontWeight: '700', fontSize: '28px' }
@@ -55,8 +51,8 @@ export function MovieDetails() {
           </div>
         </div>
       </div>
-      <MovieComments idFilme={movieId} nomeFilme={movie.title} />
-      <ListComments dados={coment} />
+      <MovieComments idFilme={movieId} />
+      <ListComments idFilme={movieId} />
     </article>
   );
 }
