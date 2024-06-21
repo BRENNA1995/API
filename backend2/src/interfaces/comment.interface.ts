@@ -1,3 +1,6 @@
+import { Usuario } from "@prisma/client";
+import { usuarioComComentario } from "./usuario.interface";
+
 export interface Comment {
    id: number,
    usuarioId: number,
@@ -5,17 +8,14 @@ export interface Comment {
    createdAt: Date,
    filmeId: number,
 }
-//FIXME: adicionar usuario: Usuario,
+
+
 export interface CommentInsert {
    usuarioId: number,
    comment: string,
    filmeId: number,
 }
-export interface CommentsRepository {
-   findAll(id: number): Promise<Comment[]>
-   create(data: CommentInsert): Promise<Comment>
-   delete(id: number): Promise<Comment>
-}
+
 export interface CommentDelete {
    id: number
 }
@@ -25,3 +25,9 @@ export interface CreatedCommentReturn {
    message: string,
    body: object
 }
+export interface CommentsRepository {
+   findAll(id: number): Promise<Comment[]>
+   create(data: CommentInsert): Promise<Comment>
+   delete(id: number): Promise<Comment>
+}
+

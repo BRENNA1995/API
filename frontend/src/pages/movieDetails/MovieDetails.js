@@ -10,7 +10,6 @@ import { ListComments } from "../../components/ListComments/ListComments";
 export function MovieDetails() {
   const { movieId } = useParams();
   const movie = useGetMovieDetail(movieId);   
-
   const movieInfo = { fontSize: '22px', marginTop: '-20px', lineHeight: '30px', maxWidth: '800px' }
   const movietitle = { marginBottom: '20px', fontWeight: '700', fontSize: '28px' }
 

@@ -1,3 +1,5 @@
+import { Comment } from "@prisma/client"
+
 export interface usuario {
    id: number,
    username: string,
@@ -7,6 +9,11 @@ export interface usuario {
    status: string,
 
 }
+
+export interface usuarioComComentario extends usuario{
+   comment: Comment[]
+}
+
 export interface usuarioCreated {
    id: number,
    username: string,
@@ -29,7 +36,7 @@ export interface ParamsType {
 }
 export interface UsuarioRepository {
    create(data: usuarioCreated): Promise<usuario>
-   findAll(): Promise<usuario[]>
+   findAll(): Promise<usuarioComComentario[]>
    findById(id: number): Promise<usuario | null>
    updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null>
    updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null>

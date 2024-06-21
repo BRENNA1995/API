@@ -1,6 +1,5 @@
 import { prisma } from "../database/prisma-client";
 import { Comment, CommentInsert, CommentsRepository } from "../interfaces/comment.interface";
-
 class CommentRepositoryPrisma implements CommentsRepository{
    async findAll(id: number): Promise<Comment[]> {
       const result = await prisma.comment.findMany({where: {
@@ -8,6 +7,8 @@ class CommentRepositoryPrisma implements CommentsRepository{
       }})
       return result;
    }
+   
+
    async create(data: CommentInsert): Promise<Comment> {
       try {
          const result = await prisma.comment.create({ data })

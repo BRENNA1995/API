@@ -5,19 +5,19 @@ import React, { useState } from "react";
 
 export function MovieComments(props) {
   const [data, setData] = useState({
-    id: "",
-    name: "",
-    comentario: "",
-    nome_usuario: ""
+    filmeId: 0,
+    comment: "",
+    usuarioId: 0
   });
-
+ console.log(props.idFilme)
   const handleForm = () => {
+    console.log(data.comment)
     try {
       axios
-        .post(`http://localhost:3003/filmes/${props.filmeId}/comentarios`, {
-          filmeId: data.id,
-          coment: data.comentario,
-          username: data.nome_usuario,
+        .post(`http://localhost:3003/filmes/${props.idFilme}/comentarios/new`, {
+          filmeId: Number(data.filmeId),
+          comment: String(data.comment),
+          usuarioId: 1,
         })
     }
     catch (err) {
@@ -61,7 +61,7 @@ export function MovieComments(props) {
               <div className="row">
                 <div className="input-field col s12">
                   <textarea id="textarea1" className="materialize-textarea" onChange={e =>
-                    setData({ comentario: e.target.value })}></textarea>
+                    setData({ comment: e.target.value })}></textarea>
                   <label htmlFor="textarea1">Insira o comentário</label>
                 </div>
               </div>
