@@ -11,7 +11,7 @@ class CommentUsecase {
       return result;
    }
    async createComment(data: CommentInsert) {
-      if (data.filmeId == null || data.usuarioId == null || data.filmeId == null) {
+      if (data.filmeId == null || data.username == null || data.filmeId == null) {
          return {
             statuscode: 400,
             messageError: 'Bad request',

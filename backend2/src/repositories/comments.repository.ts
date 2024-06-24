@@ -25,7 +25,7 @@ class CommentRepositoryPrisma implements CommentsRepository{
          }
       })
       return result;
-   }
+   } 
 }
 //update
 export{ CommentRepositoryPrisma }

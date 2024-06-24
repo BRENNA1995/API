@@ -6,10 +6,7 @@ export async function usuarioRoutes(fastify: FastifyInstance) {
 
     const usuarioUsecase = new UsuariouseCase()
 
-    fastify.get('/', async (req, reply) => {
-        const response = await usuarioUsecase.findAll();
-        reply.send(response);
-    })
+  
     fastify.get<{ Params: { id: number } }>('/:id', async (req, reply) => {
         const response = await usuarioUsecase.findById(req.params.id);
         reply.send(response);

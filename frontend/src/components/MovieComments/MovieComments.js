@@ -1,45 +1,36 @@
 import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
+import { MeuContexto } from '../../context/context';
+ 
 
 export function MovieComments(props) {
+
   const [data, setData] = useState({
     filmeId: 0,
     comment: "",
-    usuarioId: 0
+    username: ""
   });
- console.log(props.idFilme)
+
+ 
+const {valor, setValor } = useContext(MeuContexto);
+
   const handleForm = () => {
-    console.log(data.comment)
+
     try {
-      axios
-        .post(`http://localhost:3003/filmes/${props.idFilme}/comentarios/new`, {
+      axios.post(`http://localhost:3003/filmes/${props.idFilme}/comentarios/new`, {
           filmeId: Number(data.filmeId),
           comment: String(data.comment),
-          usuarioId: 1,
+          username: "Brenna",
         })
+        setValor(props.idFilme)
+        console.log(valor)
     }
     catch (err) {
       console.error("Erro ao enviar o POST:", err);
     }
   }
-
-  // useEffect(() => {
-  //   axios
-  //     .post("http://localhost:3002/enviar", {
-  //       idFilme: data.id,
-  //       nomeFilme: data.name,
-  //       comentario: data.comentario,
-  //       nome_usuario: data.nome_usuario,
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Erro ao enviar o POST:", error);
-  //     });
-  // }, [data]);
 
   const avatarUser = { width: '50px', height: '50px', borderRadius: '18%', marginRight: '12px' }
   const commentUserName = { fontWeight: '500', fontSize: '20px', marginRight: '10px' }

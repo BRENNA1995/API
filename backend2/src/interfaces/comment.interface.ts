@@ -1,9 +1,8 @@
 import { Usuario } from "@prisma/client";
-import { usuarioComComentario } from "./usuario.interface";
 
 export interface Comment {
    id: number,
-   usuarioId: number,
+   username: string,
    comment: string,
    createdAt: Date,
    filmeId: number,
@@ -11,7 +10,7 @@ export interface Comment {
 
 
 export interface CommentInsert {
-   usuarioId: number,
+   username: string,
    comment: string,
    filmeId: number,
 }

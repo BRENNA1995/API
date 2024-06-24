@@ -10,9 +10,6 @@ export interface usuario {
 
 }
 
-export interface usuarioComComentario extends usuario{
-   comment: Comment[]
-}
 
 export interface usuarioCreated {
    id: number,
@@ -36,7 +33,6 @@ export interface ParamsType {
 }
 export interface UsuarioRepository {
    create(data: usuarioCreated): Promise<usuario>
-   findAll(): Promise<usuarioComComentario[]>
    findById(id: number): Promise<usuario | null>
    updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null>
    updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null>

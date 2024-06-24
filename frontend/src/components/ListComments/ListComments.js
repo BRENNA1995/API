@@ -2,6 +2,7 @@ import userImage from "../../images/user.png";
 import { useState, useEffect } from "react";
 import { MoviesService } from "../../api/MoviesService";
 
+
 export function ListComments(props) {
   const [comentariosDoFilme, setComentariosDoFilme] = useState([])
 
@@ -22,7 +23,7 @@ export function ListComments(props) {
           <figure>
             <img src={userImage} className="circle" style={{ ...avatar }} alt="usuário" />
           </figure>
-          <div className="title" style={{ ...titleName }}>{item.id}</div>
+          <div className="title" style={{ ...titleName }}>{item.username}</div>
           <div style={{ ...textComment }}>{item.comment}</div>
         </li>)) : <li style={{ ...textComment }}>Não há comentários para esse filme. Seja o primeiro a comentar!</li>}
     </ul>

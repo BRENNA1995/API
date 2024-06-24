@@ -27,19 +27,17 @@ model Usuario {
   senha    String
   isAdmin  Boolean   @default(false)
   status   String
-  comment  Comment[]
 
   //@@map("usuario")
 }
 
 model Comment {
   id        Int      @id @default(autoincrement())
-  usuarioId Int
+  username  String   
   comment   String
   filmeId   Int
   createdAt DateTime @default(now())
   filme     Filme    @relation(fields: [filmeId], references: [id])
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
 
   //@@map("comentarios")
 }
