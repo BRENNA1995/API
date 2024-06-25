@@ -1,9 +1,9 @@
 import { prisma } from "../database/prisma-client";
-import { isAdminUpdate, statusUpdate, usuario, usuarioCreated, UsuarioRepository } from "../interfaces/usuario.interface";
+import { isAdminUpdate, statusUpdate, usuario,  UsuarioRepository,  } from "../interfaces/usuario.interface";
 
 class usuarioRepositoryPrisma implements UsuarioRepository {
 
-   async create(data: usuarioCreated): Promise<usuario> {
+   async create(data: usuario): Promise<usuario> {
       try {
          const result = await prisma.usuario.create({ data })
          return result;
@@ -11,14 +11,19 @@ class usuarioRepositoryPrisma implements UsuarioRepository {
          throw e
       }
    }
-
-
-   async findById(id: number): Promise<usuario | null> {
+   async findByEmail(email: string): Promise<usuario | null> {
       const result = await prisma.usuario.findFirst({
-         where: { id },
+         where: { email },
       })
       return result;
    }
+   async usuariofindByEmailSenha(email: string, senha: string ): Promise<usuario | null >  {
+      const result = await prisma.usuario.findFirst({
+         where: { email, senha },
+      })
+      return result;
+   }
+ 
    async updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null> {
       const result = await prisma.usuario.update({
          where: { id },

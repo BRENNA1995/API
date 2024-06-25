@@ -20,4 +20,10 @@ export class MoviesService {
 	static getComments(movieId) {
 		return api.get(`filmes/${movieId}/comentarios`);
 	}	
+	static insertUsuarios() {
+		return api.post(`usuarios/new`);
+	}	
+	static getUsuarios() {
+		return api.get(`usuarios/login`);
+	}	
 }

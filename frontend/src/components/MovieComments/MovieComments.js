@@ -1,8 +1,8 @@
 import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
 import axios from "axios";
-import React, { useState,useContext } from "react";
-import { MeuContexto } from '../../context/context';
+import React, { useState } from "react";
+
  
 
 export function MovieComments(props) {
@@ -14,7 +14,7 @@ export function MovieComments(props) {
   });
 
  
-const {valor, setValor } = useContext(MeuContexto);
+//const {valor, setValor } = useContext(MeuContexto);
 
   const handleForm = () => {
 
@@ -24,8 +24,7 @@ const {valor, setValor } = useContext(MeuContexto);
           comment: String(data.comment),
           username: "Brenna",
         })
-        setValor(props.idFilme)
-        console.log(valor)
+        alert('Comentario Adicionado.Atualize a tela para visualiza-lo')
     }
     catch (err) {
       console.error("Erro ao enviar o POST:", err);
