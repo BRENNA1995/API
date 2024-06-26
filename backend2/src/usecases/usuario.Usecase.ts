@@ -21,9 +21,10 @@ class UsuariouseCase {
    async usuariofindByEmailSenha(email: string, senha: string): Promise<Boolean | null> {
       const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
       let resultado=false
-      if (!verifyEmailSenha) {
+      if (verifyEmailSenha) {
           resultado=true 
       }
+      console.log(12, resultado)
       return resultado;
    }
 

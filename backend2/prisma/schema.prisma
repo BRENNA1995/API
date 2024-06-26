@@ -17,7 +17,7 @@ model Filme {
   createdAt  DateTime
   comments   Comment[]
 
-  //@@map("filmes")
+  @@map("filmes")
 }
 
 model Usuario {
@@ -28,7 +28,7 @@ model Usuario {
   isAdmin  Boolean   @default(false)
   status   String
 
-  //@@map("usuario")
+  @@map("usuarios")
 }
 
 model Comment {
@@ -39,5 +39,5 @@ model Comment {
   createdAt DateTime @default(now())
   filme     Filme    @relation(fields: [filmeId], references: [id])
 
-  //@@map("comentarios")
+  @@map("comentarios")
 }

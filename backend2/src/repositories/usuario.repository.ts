@@ -21,6 +21,7 @@ class usuarioRepositoryPrisma implements UsuarioRepository {
       const result = await prisma.usuario.findFirst({
          where: { email, senha },
       })
+      console.log(24, result)
       return result;
    }
  

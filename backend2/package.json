@@ -4,7 +4,6 @@
   "description": "Super Tela",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts"
@@ -20,6 +19,7 @@
   "dependencies": {
     "@fastify/cors": "^9.0.1",
     "@prisma/client": "^5.14.0",
+    "express": "^4.19.2",
     "fastify": "^4.27.0",
     "tsx": "^4.11.0"
   }

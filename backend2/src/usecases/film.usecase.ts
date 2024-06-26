@@ -1,3 +1,4 @@
+import { Filme } from "@prisma/client";
 import { Film, FilmCreated, FilmRepository } from "../interfaces/film.interface";
 import { FilmRepositoryPrisma } from "../repositories/filmes.repository";
 
@@ -26,13 +27,16 @@ class FilmuseCase {
    //    return result;
    // } 
 
-   async create(data: FilmCreated): Promise<Film> {
+   async create(data: FilmCreated): Promise<Film | null > {
       const verifyFilmExists = await this.filmRepository.findById(data.id)
       if (verifyFilmExists) {
-         throw new Error('Filme já existe');
+         console.log('Filme já existe');
       }
-      const result = await this.filmRepository.create(data)
-      return result;
+      else
+      {
+        return await this.filmRepository.create(data) 
+      }
+      return null;
    }
    async delete(id: string): Promise<FilmCreated> {
       const result = await this.filmRepository.delete(id)

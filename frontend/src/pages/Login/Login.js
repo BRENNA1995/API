@@ -16,17 +16,25 @@ export function Login() {
 
   const navigate = useNavigate();
 
+
+  // function saveData(){
+  //   let usuario=''
+  //   usuario=
+
+  // }
+
   function handleOnSubmit(event) {
     event.preventDefault();
     console.log("enviando dados para login");
+    //navigate("/home", { replace: true });
 
     try {
-      axios.get(`http://localhost:3003/usuarios/login`, {
+      axios.post(`http://localhost:3003/usuarios/login`, {
           senha: userPassword,
           email: userEmail,
         })
         .then(function (response) {
-          if (userEmail === response.data.email && userPassword === response.data.senha) {
+          if (response) {
             navigate("/home", { replace: true });
           } 
           else {
