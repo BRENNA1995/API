@@ -27,7 +27,9 @@ export interface ParamsType {
 export interface UsuarioRepository {
    create(data: usuario): Promise<usuario>
    findByEmail(email: string): Promise<usuario | null>
-   usuariofindByEmailSenha(email: string, senha: string ): Promise<usuario | null>
+   findUsernameByEmail(email: string,senha: string): Promise<string >
+   usuariofindByEmailSenha(email: string, senha: string ): Promise<usuario  | null>
    updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null>
    updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null>
+
 }

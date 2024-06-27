@@ -1,4 +1,4 @@
-import { api } from "../config/http";
+import { api, api2 } from "../config/http";
 export class MoviesService {
  	// static getMovies() {
 	//  	return api2.get("movie/popular");
@@ -9,7 +9,7 @@ export class MoviesService {
 	}
 	
 	static getMovieDetail(movieId) {
-		return api.get(`filmes/${movieId}`);
+		return api2.get(`${movieId}`);
 	}
 	static searchByMovieTitle(movieTitle) {
 		return api.get("search/movie", {

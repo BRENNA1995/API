@@ -9,7 +9,7 @@ export async function usuarioRoutes(fastify: FastifyInstance) {
     const usuarioUsecase = new UsuariouseCase()
 
     fastify.post<{ Body: usuario }>('/login', async (req, reply) => {
-        const response = await usuarioUsecase.usuariofindByEmailSenha(req.body.email, req.body.senha);
+        const response = await usuarioUsecase.usuarioBooleanByEmailSenha(req.body.email, req.body.senha);
         reply.send(response);
     })
 

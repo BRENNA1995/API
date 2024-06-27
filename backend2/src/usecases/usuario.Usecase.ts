@@ -1,40 +1,60 @@
-import { UsuarioRepository, isAdminUpdate, statusUpdate, usuario } from "../interfaces/usuario.interface"
-import { usuarioRepositoryPrisma } from "../repositories/usuario.repository"
+import {
+  UsuarioRepository,
+  isAdminUpdate,
+  statusUpdate,
+  usuario,
+} from "../interfaces/usuario.interface";
+import { usuarioRepositoryPrisma } from "../repositories/usuario.repository";
 
 class UsuariouseCase {
-   private usuarioRepository: UsuarioRepository
+  private usuarioRepository: UsuarioRepository;
 
-   constructor() {
-      this.usuarioRepository = new usuarioRepositoryPrisma()
-   }
-   async create(data: usuario): Promise<Boolean> {
-      const verifyUsuarioExists = await this.usuarioRepository.findByEmail(data.email)
-      let resultado=false
-      if (!verifyUsuarioExists) {
-          await this.usuarioRepository.create(data)
-          resultado=true 
-      }
-      return resultado;
-      
-   }
-  
-   async usuariofindByEmailSenha(email: string, senha: string): Promise<Boolean | null> {
-      const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
-      let resultado=false
-      if (verifyEmailSenha) {
-          resultado=true 
-      }
-      console.log(12, resultado)
-      return resultado;
-   }
+  constructor() {
+    this.usuarioRepository = new usuarioRepositoryPrisma();
+  }
+  async create(data: usuario): Promise<Boolean> {
+    const verifyUsuarioExists = await this.usuarioRepository.findByEmail(
+      data.email
+    );
+    let resultado = false;
+    if (!verifyUsuarioExists) {
+      await this.usuarioRepository.create(data);
+      resultado = true;
+    }
+    return resultado;
+  }
 
-   async updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null> {
-      const result = await this.usuarioRepository.updateByIdStatus(id, data)
-      return result;
+  async usuarioBooleanByEmailSenha(email: string, senha: string): Promise<Boolean | null> {
+   const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
+   let resultado=false
+   if (verifyEmailSenha) {
+       resultado=true
    }
-   async updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null> {
-      const result = await this.usuarioRepository.updateByIdAdmin(id, data)
-      return result;
-   }
+   return resultado;
 }
-export { UsuariouseCase }
+  
+  async findUsernameByEmail(email: string,senha: string ): Promise<string> {
+   const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
+   if (verifyEmailSenha) {
+       await this.usuarioRepository.findUsernameByEmail(email,senha) 
+
+   }
+   return '';
+ }
+
+  async updateByIdStatus(
+    id: number,
+    data: statusUpdate
+  ): Promise<usuario | null> {
+    const result = await this.usuarioRepository.updateByIdStatus(id, data);
+    return result;
+  }
+  async updateByIdAdmin(
+    id: number,
+    data: isAdminUpdate
+  ): Promise<usuario | null> {
+    const result = await this.usuarioRepository.updateByIdAdmin(id, data);
+    return result;
+  }
+}
+export { UsuariouseCase };

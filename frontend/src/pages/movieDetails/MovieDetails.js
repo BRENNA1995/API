@@ -12,7 +12,7 @@ export function MovieDetails() {
   const movie = useGetMovieDetail(movieId);   
   const movieInfo = { fontSize: '22px', marginTop: '-20px', lineHeight: '30px', maxWidth: '800px' }
   const movietitle = { marginBottom: '20px', fontWeight: '700', fontSize: '28px' }
-
+  console.log(movie)
   return (
     <article className={styles.page}>
       <div className={styles.form}>
@@ -32,15 +32,15 @@ export function MovieDetails() {
             <ul>
               <li>
                 <span className={styles.topicInfor}>Data de lançamento: </span>
-                <span>{movie.createdAt}</span>
+                <span>{movie.release_date}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Nota: </span>
-                <span>{movie.imdbVotes}</span>
+                <span>{movie.vote_average}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Popularidade: </span>
-                <span>{movie.imdbRating}</span>
+                <span>{movie.popularity}</span>
               </li>
               <li>
                 <span className={styles.topicInfor}>Duração: </span>

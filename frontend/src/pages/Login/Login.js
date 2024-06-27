@@ -2,11 +2,15 @@ import { useState } from "react";
 import { styles } from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import React from "react";
+
+import { useLocalStorage } from "../../hooks/useLocalStorage"
+
 
 export function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-
+  const navigate = useNavigate();
   const textTitleStart = {
     fontSize: "2em",
     fontWeight: "600",
@@ -14,14 +18,13 @@ export function Login() {
     textAlign: "center",
   };
 
-  const navigate = useNavigate();
-
-
-  // function saveData(){
-  //   let usuario=''
-  //   usuario=
-
-  // }
+  const [usuarioLogado, setUsuarioLogado] = useLocalStorage("usuarioLogado",'');
+   
+    // const saveUser = () => {
+    //   setUsuarioLogado(usuarioLogado);
+    // };
+   
+  
 
   function handleOnSubmit(event) {
     event.preventDefault();
@@ -34,7 +37,9 @@ export function Login() {
           email: userEmail,
         })
         .then(function (response) {
-          if (response) {
+          if (response !== '') {
+            setUsuarioLogado(response)
+            console.log(usuarioLogado)
             navigate("/home", { replace: true });
           } 
           else {

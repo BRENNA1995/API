@@ -2,6 +2,13 @@ import { prisma } from "../database/prisma-client";
 import { isAdminUpdate, statusUpdate, usuario,  UsuarioRepository,  } from "../interfaces/usuario.interface";
 
 class usuarioRepositoryPrisma implements UsuarioRepository {
+   async findUsernameByEmail(email: string): Promise< string > {
+      const result = await prisma.usuario.findFirst({
+         where: { email },
+      }) 
+      let username =result?.username ? result.username : ''
+      return username
+   }
 
    async create(data: usuario): Promise<usuario> {
       try {
