@@ -29,17 +29,15 @@ class UsuariouseCase {
    let resultado=false
    if (verifyEmailSenha) {
        resultado=true
+       
    }
    return resultado;
 }
   
-  async findUsernameByEmail(email: string,senha: string ): Promise<string> {
-   const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
-   if (verifyEmailSenha) {
-       await this.usuarioRepository.findUsernameByEmail(email,senha) 
-
-   }
-   return '';
+  async findUsernameByEmail(email: string ): Promise<string> {
+   const verifyEmailSenha = await this.usuarioRepository.findUsernameByEmail(email )
+   console.log(39, verifyEmailSenha)
+   return verifyEmailSenha ;
  }
 
   async updateByIdStatus(

@@ -8,9 +8,17 @@ export async function usuarioRoutes(fastify: FastifyInstance) {
 
     const usuarioUsecase = new UsuariouseCase()
 
-    fastify.post<{ Body: usuario }>('/login', async (req, reply) => {
+    fastify.post<{ Body: {email: string, senha: string }  }>('/login', async (req, reply) => {
         const response = await usuarioUsecase.usuarioBooleanByEmailSenha(req.body.email, req.body.senha);
-        reply.send(response);
+        if (response){
+            const res= await usuarioUsecase.findUsernameByEmail(req.body.email)
+            //console.log(15,res)
+             await reply.send(res)
+        }
+        else{
+            reply.status(401)
+        }
+        
     })
 
 
@@ -29,3 +37,9 @@ export async function usuarioRoutes(fastify: FastifyInstance) {
         reply.send(response);
     })
 }
+
+function findUsernameByEmail(email: string) {
+
+    throw new Error("Function not implemented.");
+}
+

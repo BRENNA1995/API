@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import React from "react";
 
-import { useLocalStorage } from "../../hooks/useLocalStorage"
-
 
 export function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -18,7 +16,7 @@ export function Login() {
     textAlign: "center",
   };
 
-  const [usuarioLogado, setUsuarioLogado] = useLocalStorage("usuarioLogado",'');
+  //const [usuarioLogado, setUsuarioLogado] = useLocalStorage("usuarioLogado",);
    
     // const saveUser = () => {
     //   setUsuarioLogado(usuarioLogado);
@@ -38,8 +36,9 @@ export function Login() {
         })
         .then(function (response) {
           if (response !== '') {
-            setUsuarioLogado(response)
-            console.log(usuarioLogado)
+            console.log(response.data)
+            //setUsuarioLogado(response.data)
+            localStorage.setItem('user', JSON.stringify(response.data))
             navigate("/home", { replace: true });
           } 
           else {
