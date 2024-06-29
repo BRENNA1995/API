@@ -26,7 +26,7 @@ export function Login(sendDataConnect) {
         email: userEmail,
       })
         .then(function (response) {
-          if (response !== '') {
+          if (response !== undefined) {
             localStorage.setItem('userName', (response.data))
             localStorage.setItem('userEmail', (userEmail))
 
