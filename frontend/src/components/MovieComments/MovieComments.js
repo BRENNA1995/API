@@ -1,40 +1,36 @@
 import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
 import axios from "axios";
-import React, { useState } from "react";
-
- 
+import React, { useState, useEffect } from "react";
 
 export function MovieComments(props) {
-
   const [data, setData] = useState({
     filmeId: 0,
     comment: "",
     username: ""
   });
+  const avatarUser = { width: '50px', height: '50px', borderRadius: '18%', marginRight: '12px' }
+  const commentUserName = { fontWeight: '500', fontSize: '20px', marginRight: '10px' }
 
+  const [storageDataUsername, setStorageDataUsername] = useState('')
 
-
-
-//const {valor, setValor } = useContext(MeuContexto);
+  useEffect(() => {
+    setStorageDataUsername(localStorage.getItem('userName'))
+  }, [])
 
   const handleForm = () => {
-
     try {
       axios.post(`http://localhost:3003/filmes/${props.idFilme}/comentarios/new`, {
-          filmeId: Number(data.filmeId),
-          comment: String(data.comment),
-          username: "Brenna",
-        })
-        alert('Comentario Adicionado.Atualize a tela para visualiza-lo')
+        filmeId: Number(data.filmeId),
+        comment: String(data.comment),
+        username: storageDataUsername,
+      })
+      alert('Comentário Adicionado! Atualize a tela para visualizá-lo')
     }
     catch (err) {
       console.error("Erro ao enviar o POST:", err);
     }
   }
-
-  const avatarUser = { width: '50px', height: '50px', borderRadius: '18%', marginRight: '12px' }
-  const commentUserName = { fontWeight: '500', fontSize: '20px', marginRight: '10px' }
 
   return (
     <div className="container">
@@ -48,7 +44,7 @@ export function MovieComments(props) {
         </figure>
         <div className="col s8 m8 l8">
           <div className="row">
-            <div className="col s12" style={{ ...commentUserName }}>Usuário</div>
+            <div className="col s12" style={{ ...commentUserName }}>{storageDataUsername}</div>
             <form className="col s12 m12 l12">
               <div className="row">
                 <div className="input-field col s12">

@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Filme {
-  id         Int        @id 
+  id         Int       @id
   title      String    @unique
   sinopse    String
   poster     String
@@ -21,19 +21,20 @@ model Filme {
 }
 
 model Usuario {
-  id       Int       @id @default(autoincrement())
-  username String
-  email    String    @unique
-  senha    String
-  isAdmin  Boolean   @default(false)
-  status   String
+  id        Int     @id @default(autoincrement())
+  username  String
+  email     String  @unique
+  senha     String
+  isAdmin   Boolean @default(false)
+  status    String
+  connected Boolean @default(false)
 
   @@map("usuarios")
 }
 
 model Comment {
   id        Int      @id @default(autoincrement())
-  username  String   
+  username  String
   comment   String
   filmeId   Int
   createdAt DateTime @default(now())

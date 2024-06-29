@@ -43,5 +43,4 @@ class FilmuseCase {
       return result;
    }
 }
-
 export { FilmuseCase }

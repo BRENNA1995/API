@@ -3,9 +3,9 @@ import { styles } from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import React from "react";
+import useDataContext from "../../hooks/useDataContext";
 
-
-export function Login() {
+export function Login(sendDataConnect) {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
@@ -16,41 +16,39 @@ export function Login() {
     textAlign: "center",
   };
 
-  //const [usuarioLogado, setUsuarioLogado] = useLocalStorage("usuarioLogado",);
-   
-    // const saveUser = () => {
-    //   setUsuarioLogado(usuarioLogado);
-    // };
-   
-  
-
+  const { setLogin } = useDataContext()
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log("enviando dados para login");
     //navigate("/home", { replace: true });
-
     try {
       axios.post(`http://localhost:3003/usuarios/login`, {
-          senha: userPassword,
-          email: userEmail,
-        })
+        senha: userPassword,
+        email: userEmail,
+      })
         .then(function (response) {
           if (response !== '') {
-            console.log(response.data)
-            //setUsuarioLogado(response.data)
-            localStorage.setItem('user', JSON.stringify(response.data))
+            localStorage.setItem('userName', (response.data))
+            localStorage.setItem('userEmail', (userEmail))
+
+            setLogin(true)
             navigate("/home", { replace: true });
-          } 
+          }
           else {
+            setLogin(false)
             alert("Usuário ou senha inválidos");
           }
         });
-        } catch (err) {
-      console.error("Erro ao enviar o GET:", err);
-    }
-  
-  setUserEmail("");
-  setUserPassword("");
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.error('Erro 401: Não autorizado');
+        navigate("/login", { replace: true });
+      } else {
+        console.error('Outro erro:', error.message);
+      }}
+    
+    //TODO: CHAMADA UPDATE
+    setUserEmail("");
+    setUserPassword("");
   }
   return (
     <div className="container">
@@ -73,7 +71,7 @@ export function Login() {
           type="submit"
           name="action"
         >
-          Entrar
+          Continuar
         </button>
       </form>
     </div>

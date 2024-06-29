@@ -11,24 +11,26 @@
 .header h1 {
 	font-family: "Black Ops One", system-ui;
 	color: #ffffff;
-	text-shadow:       
-      0 0 10px #00b0ff,
-      0 0 20px #00b0ff;
-	font-size: 44px;		
+	font-size: 44px;
 	font-weight: 400;
 	font-style: normal;
-}
-
-.header h1 {
 	margin: 0;
 }
 
-@media only screen and (max-width: 500px){
+.header h1:hover {
+	text-shadow:
+		0 0 0.1em #97e1ff,
+		0 0 0.4em #00b0ff,
+		0 0 0.4em #0eb3ff;
+}
+
+@media only screen and (max-width: 500px) {
 	.header {
 		padding: 12px 40px 14px;
 		text-align: left;
 	}
+
 	.header h1 {
-		font-size: 24px;	
+		font-size: 24px;
 	}
 }

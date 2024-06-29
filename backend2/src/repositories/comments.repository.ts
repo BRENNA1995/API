@@ -6,9 +6,7 @@ class CommentRepositoryPrisma implements CommentsRepository{
          filmeId: id
       }})
       return result;
-   }
-   
-
+   }   
    async create(data: CommentInsert): Promise<Comment> {
       try {
          const result = await prisma.comment.create({ data })

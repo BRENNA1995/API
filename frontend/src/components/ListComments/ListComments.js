@@ -2,7 +2,6 @@ import userImage from "../../images/user.png";
 import { useState, useEffect } from "react";
 import { MoviesService } from "../../api/MoviesService";
 
-
 export function ListComments(props) {
   const [comentariosDoFilme, setComentariosDoFilme] = useState([])
 

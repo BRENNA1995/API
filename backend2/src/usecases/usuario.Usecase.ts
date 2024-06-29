@@ -2,7 +2,7 @@ import {
   UsuarioRepository,
   isAdminUpdate,
   statusUpdate,
-  usuario,
+  usuario, userConnectedBoolean
 } from "../interfaces/usuario.interface";
 import { usuarioRepositoryPrisma } from "../repositories/usuario.repository";
 
@@ -23,23 +23,21 @@ class UsuariouseCase {
     }
     return resultado;
   }
-
   async usuarioBooleanByEmailSenha(email: string, senha: string): Promise<Boolean | null> {
-   const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha )
-   let resultado=false
-   if (verifyEmailSenha) {
-       resultado=true
-       
-   }
-   return resultado;
-}
-  
-  async findUsernameByEmail(email: string ): Promise<string> {
-   const verifyEmailSenha = await this.usuarioRepository.findUsernameByEmail(email )
-   console.log(39, verifyEmailSenha)
-   return verifyEmailSenha ;
- }
-
+    const verifyEmailSenha = await this.usuarioRepository.usuariofindByEmailSenha(email, senha)
+    let resultado = false
+    if (verifyEmailSenha) {
+      resultado = true
+    }
+    return resultado;
+  }
+  async getUserConnected(email: string): Promise<userConnectedBoolean | null> {
+    return await this.usuarioRepository.getUserConnected(email)
+  }
+  async findUsernameByEmail(email: string): Promise<string> {
+    const verifyEmailSenha = await this.usuarioRepository.findUsernameByEmail(email)
+    return verifyEmailSenha;
+  }
   async updateByIdStatus(
     id: number,
     data: statusUpdate

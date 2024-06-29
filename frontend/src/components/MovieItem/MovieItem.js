@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import { MovieImage } from "../MovieImage/MovieImage";
-//import axios from "axios";
 import React from "react";
 //import { api2 } from "../../config/http";
 
 export function MovieItem({ movie }) {
-
-
 
   return (
     <li className="col s12 m5 l3">

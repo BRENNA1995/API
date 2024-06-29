@@ -7,14 +7,11 @@ export interface Comment {
    createdAt: Date,
    filmeId: number,
 }
-
-
 export interface CommentInsert {
    username: string,
    comment: string,
    filmeId: number,
 }
-
 export interface CommentDelete {
    id: number
 }
@@ -29,4 +26,3 @@ export interface CommentsRepository {
    create(data: CommentInsert): Promise<Comment>
    delete(id: number): Promise<Comment>
 }
-

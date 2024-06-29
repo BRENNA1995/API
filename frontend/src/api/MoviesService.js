@@ -1,13 +1,8 @@
 import { api, api2 } from "../config/http";
 export class MoviesService {
- 	// static getMovies() {
-	//  	return api2.get("movie/popular");
-	//  }
-	
 	static getMovies() {	
 		return api.get("filmes/");
-	}
-	
+	}	
 	static getMovieDetail(movieId) {
 		return api2.get(`${movieId}`);
 	}
@@ -27,4 +22,7 @@ export class MoviesService {
 	static getUsuarios() {
 		return api.get(`usuarios/login`);
 	}	
+	static getUserConnected() {
+		return api.get('/connected')
+	} 
 }

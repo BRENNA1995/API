@@ -8,11 +8,9 @@ export async function commentRoutes(fastify: FastifyInstance) {
 
    fastify.get<{ Params: { id: number } }>('/', async (req, reply) => {
       const response = await commentUsecase.findAllComments(Number(req.params.id));
-      reply.send(response);
-   
+      reply.send(response);   
       }
    )
-
    fastify.post<{ Params: { id: number }, Body: { username: string, comment: string } }>('/new', async (req, reply) => {
       const resposta: CommentInsert = { username:  req.body.username, comment: req.body.comment, filmeId: Number(req.params.id) }
       const response = await commentUsecase.createComment(resposta);

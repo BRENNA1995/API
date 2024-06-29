@@ -11,8 +11,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
       reply.send(data);
    })
    fastify.get<{ Params: FilmCreated }>('/:id', async (req, reply) => {
-      console.log(req.params.id)
-
       await fetch(`https://api.themoviedb.org/3/movie/${req.params.id}`, {
          headers: {
             'Content-type': 'application/json',
@@ -43,7 +41,7 @@ export async function filmRoutes(fastify: FastifyInstance) {
          reply.send(error)
       }
    })
-   
+
    // fastify.post<{ Body: FilmCreated }>('/api', async (req, reply) => {
    //          filmUsecase.create({
    //                id: req.body.id,
@@ -56,12 +54,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
    //                })
    //                reply.status(204)
    //          })
-   
-
-
 
    fastify.post('/api', async (req, reply) => {
-
       await fetch('https://api.themoviedb.org/3/movie/popular', {
          headers: {
             'Content-type': 'application/json',
@@ -80,12 +74,9 @@ export async function filmRoutes(fastify: FastifyInstance) {
                   poster: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
                   createdAt: new Date(film.release_date)
                })
-               
             });
-            console.log(84, results)
             reply.status(204)
          })
    }
-
    )
 }

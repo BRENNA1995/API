@@ -4,7 +4,6 @@ import { commentRoutes } from './routes/comment.routes'
 import { usuarioRoutes } from "./routes/usuario.routes";
 import cors from "@fastify/cors"
 
-
 const server: FastifyInstance = fastify({
    logger: true
 })
@@ -20,9 +19,8 @@ server.register(commentRoutes, {
 });
 
 server.register(usuarioRoutes, {
-    prefix: '/usuarios'
+   prefix: '/usuarios'
 });
-
 server.listen(
    {
       port: 3003,
