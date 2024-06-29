@@ -7,6 +7,8 @@ import styles from "./rootLayout.module.css";
 export function RootLayout() {
 	const [status, setStatus] = useState('Entrar')
 	const [login, setLogin] = useState(false)
+	const [newComment, setNewComment] = useState(0)
+
 	const brand = { cursor: 'pointer' }
 
 	useEffect(() => {
@@ -19,7 +21,7 @@ export function RootLayout() {
 		setLogin(false)
 	}
 	return (
-		<DataContext.Provider value={{ login, setLogin }}>
+		<DataContext.Provider value={{ login, setLogin, newComment, setNewComment }}>
 			<header className={styles.header}>
 				{login ?
 					<Link to={"/home"}><h1 style={{ ...brand }}>SUPER Tela</h1></Link>

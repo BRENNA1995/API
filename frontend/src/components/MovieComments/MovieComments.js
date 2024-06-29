@@ -2,6 +2,7 @@ import styles from "./movieComments.module.css";
 import userImage from "../../images/user.png";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import useDataContext from "../../hooks/useDataContext";
 
 export function MovieComments(props) {
   const [data, setData] = useState({
@@ -13,6 +14,7 @@ export function MovieComments(props) {
   const commentUserName = { fontWeight: '500', fontSize: '20px', marginRight: '10px' }
 
   const [storageDataUsername, setStorageDataUsername] = useState('')
+  const { newComment, setNewComment} = useDataContext()
 
   useEffect(() => {
     setStorageDataUsername(localStorage.getItem('userName'))
@@ -25,7 +27,8 @@ export function MovieComments(props) {
         comment: String(data.comment),
         username: storageDataUsername,
       })
-      alert('Comentário Adicionado! Atualize a tela para visualizá-lo')
+      setNewComment(newComment + 1)
+      alert('Comentário Adicionado!')
     }
     catch (err) {
       console.error("Erro ao enviar o POST:", err);

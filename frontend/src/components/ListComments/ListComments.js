@@ -1,15 +1,18 @@
 import userImage from "../../images/user.png";
 import { useState, useEffect } from "react";
 import { MoviesService } from "../../api/MoviesService";
+import useDataContext from "../../hooks/useDataContext";
 
 export function ListComments(props) {
   const [comentariosDoFilme, setComentariosDoFilme] = useState([])
+  const { newComment } = useDataContext()
 
   useEffect(() => {
     MoviesService.getComments(props.idFilme)
       .then(({ data }) => setComentariosDoFilme(data))
       .catch((err) => console.error("Erro ao buscar comentários:", err));
-  }, [])
+  }, [newComment])
+
 
   const titleName = { color: '#0078b0', fontWeight: 500, fontSize: '22px', marginBottom: '8px' }
   const textComment = { fontSize: '18px', paddingBottom: '6px', paddingLeft: '4px' }

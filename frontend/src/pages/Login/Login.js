@@ -18,8 +18,7 @@ export function Login(sendDataConnect) {
 
   const { setLogin } = useDataContext()
   function handleOnSubmit(event) {
-    event.preventDefault();
-    //navigate("/home", { replace: true });
+    event.preventDefault();    
     try {
       axios.post(`http://localhost:3003/usuarios/login`, {
         senha: userPassword,
@@ -44,8 +43,8 @@ export function Login(sendDataConnect) {
         navigate("/login", { replace: true });
       } else {
         console.error('Outro erro:', error.message);
-      }}
-    
+      }
+    }
     //TODO: CHAMADA UPDATE
     setUserEmail("");
     setUserPassword("");
