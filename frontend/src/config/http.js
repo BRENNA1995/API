@@ -9,7 +9,7 @@ export const api = axios.create({
       }, 
 });
 export const api2 = axios.create({
-   baseURL: 'https://api.themoviedb.org/3/movie/',
+   baseURL: 'https://api.themoviedb.org/3/',
    headers: {
        Authorization: `Bearer ${env[defaultEnv].theMovieDBToken}`
    }

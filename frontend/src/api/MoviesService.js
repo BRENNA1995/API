@@ -4,15 +4,22 @@ export class MoviesService {
 		return api.get("filmes/");
 	}	
 	static getMovieDetail(movieId) {
-		return api2.get(`${movieId}`);
+		return api2.get(`movie/${movieId}`);
 	}
 	static searchByMovieTitle(movieTitle) {
-		return api.get("search/movie", {
+		return api2.get("search/movie", {
 			params: {
 				query: movieTitle,
 			}
 		});
 	}
+	// static searchByMovieTitle(movieTitle) {
+	// 	return api.get("search/movie", {
+	// 		params: {
+	// 			query: movieTitle,
+	// 		}
+	// 	});
+	// }
 	static getComments(movieId) {
 		return api.get(`filmes/${movieId}/comentarios`);
 	}	
