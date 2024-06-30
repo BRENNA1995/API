@@ -16,17 +16,6 @@ class FilmuseCase {
       const result = await this.filmRepository.findById(id)
       return result;
    }
-   // async findByIdDetail(title: string): Promise<Film> {
-   //    const verifyFilmExists = await this.filmRepository.findById(title)
-   //    const start = new Date(Date.now());
-   //    let result={id:'',title:'',sinopse:'',poster:'',imdbVotes:0,imdbRating:0,createdAt: start}
-
-   //    if(verifyFilmExists) {
-   //       result= this.filmRepository.findById(title)
-   //    }
-   //    return result;
-   // } 
-
    async create(data: FilmCreated): Promise<Film | null > {
       const verifyFilmExists = await this.filmRepository.findById(data.id)
       if (verifyFilmExists) {

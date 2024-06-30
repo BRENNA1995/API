@@ -3,32 +3,34 @@ import { MoviesService } from "../../api/MoviesService";
 import styles from "./usuarioItem.module.css";
 import useDataContext from "../../hooks/useDataContext";
 
-export function UsuarioItem({ usuario }) {   
+export function UsuarioItem({ usuario }) {
     const liPositionGroup = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', border: '1px solid', borderColor: '#303030', padding: '6px', marginTop: 0 }
     const marginLeft1 = { marginLeft: '10px' }
     const nameUser = { fontSize: '18px' }
-    const statusMargin = { display: 'inline-block', width: '60px', marginLeft: '6px',fontSize: '14px' , fontWeight: '500'}
-    const { delUsuario, setDelUsuario} = useDataContext()
-    const { statusUsuario, setStatusUsuario} = useDataContext()
+    const statusMargin = { display: 'inline-block', width: '60px', marginLeft: '6px', fontSize: '14px', fontWeight: '500' }
+    const { delUsuario, setDelUsuario } = useDataContext()
+    const { statusUsuario, setStatusUsuario } = useDataContext()
 
     function deletar() {
         MoviesService.deleteUsuario(usuario.id)
-        setDelUsuario(delUsuario + 1 )
+        setDelUsuario(delUsuario + 1)
     }
     function bloquear() {
-
+        MoviesService.bloquearUsuario(usuario.id)
+        setStatusUsuario(statusUsuario + 1)
     }
     function liberar() {
-
-    }  
+        MoviesService.liberarUsuario(usuario.id)
+        setStatusUsuario(statusUsuario + 1)
+    }
 
     return (
         <li className={styles.flexSmallGroup} style={liPositionGroup}>
             <span className={styles.flexSmallGroup}>
-                <span style={nameUser} >{usuario.username}</span>               
+                <span style={nameUser} >{usuario.username}</span>
             </span>
             <span className={styles.btnUserItems}>
-    
+
                 <button className="btn waves-effect waves-light red darken-4" type="submit" name="action" style={marginLeft1} onClick={() => deletar()}>EXCLUIR
                     <i className="material-icons right">delete</i>
                 </button>

@@ -45,7 +45,6 @@ export function Login() {
         console.error('Outro erro:', error.message);
       }
     }
-    //TODO: CHAMADA UPDATE
     setUserEmail("");
     setUserPassword("");
   }

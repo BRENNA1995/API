@@ -21,8 +21,6 @@ export function Start() {
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log("enviando dados para cadastro");
-    console.log(userName);
     try {
       axios.post(`http://localhost:3003/usuarios/new`, {
         username: userName,
@@ -32,7 +30,6 @@ export function Start() {
       }).then( function (response) 
       {
         response.data === true ? alert("Cadastro realizado com sucesso") : alert("Usuario já existe");
-
       });
     } catch (err) {
       console.error("Erro ao enviar o POST:", err);

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MovieImage } from "../MovieImage/MovieImage";
 import React from "react";
-//import { api2 } from "../../config/http";
 
 export function MovieItem({ movie }) {
 
