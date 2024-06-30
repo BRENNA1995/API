@@ -36,17 +36,12 @@ class UsuariouseCase {
     const verifyEmailSenha = await this.usuarioRepository.findUsernameByEmail(email)
     return verifyEmailSenha;
   }
-  async updateByIdStatus(
-    id: number,
-    data: statusUpdate
-  ): Promise<usuario | null> {
+  async updateByIdStatus(id: number,data: statusUpdate): Promise<usuario | null> {
     const result = await this.usuarioRepository.updateByIdStatus(id, data);
     return result;
   }
-  async updateByIdAdmin(
-    id: number,
-    data: isAdminUpdate
-  ): Promise<usuario | null> {
+  
+  async updateByIdAdmin(id: number,data: isAdminUpdate ): Promise<usuario | null> {
     const result = await this.usuarioRepository.updateByIdAdmin(id, data);
     return result;
   }
