@@ -1,9 +1,4 @@
-import {
-  UsuarioRepository,
-  isAdminUpdate,
-  statusUpdate,
-  usuario
-} from "../interfaces/usuario.interface";
+import { UsuarioRepository, usuario } from "../interfaces/usuario.interface";
 import { usuarioRepositoryPrisma } from "../repositories/usuario.repository";
 
 class UsuariouseCase {
@@ -13,9 +8,7 @@ class UsuariouseCase {
     this.usuarioRepository = new usuarioRepositoryPrisma();
   }
   async create(data: usuario): Promise<Boolean> {
-    const verifyUsuarioExists = await this.usuarioRepository.findByEmail(
-      data.email
-    );
+    const verifyUsuarioExists = await this.usuarioRepository.findByEmail(data.email);
     let resultado = false;
     if (!verifyUsuarioExists) {
       await this.usuarioRepository.create(data);
@@ -31,36 +24,26 @@ class UsuariouseCase {
     }
     return resultado;
   }
-  
   async findUsernameByEmail(email: string): Promise<string> {
     const verifyEmailSenha = await this.usuarioRepository.findUsernameByEmail(email)
     return verifyEmailSenha;
   }
-  async updateByIdStatus(
-    id: number,
-    data: statusUpdate
-  ): Promise<usuario | null> {
-    const result = await this.usuarioRepository.updateByIdStatus(id, data);
+  async updateByIdStatusBloqueio(id: number): Promise<usuario | null> {
+    const result = await this.usuarioRepository.updateByIdStatusBloqueio(id);
     return result;
   }
-  async updateByIdAdmin(
-    id: number,
-    data: isAdminUpdate
-  ): Promise<usuario | null> {
-    const result = await this.usuarioRepository.updateByIdAdmin(id, data);
+  async updateByIdStatusLiberar(id: number): Promise<usuario | null> {
+    const result = await this.usuarioRepository.updateByIdStatusLiberar(id);
     return result;
   }
-
   async getAllUsuarios(): Promise<usuario[]> {
-      return await this.usuarioRepository.getAllUsuarios()
-      
-    }
-  
-    async deleteUsuario(id: number) {
-      const result = await this.usuarioRepository.deleteUsuario(id);
-      return result;
-   }
+    return await this.usuarioRepository.getAllUsuarios()
+
+  }
+  async deleteUsuario(id: number): Promise<usuario> {
+    const result = await this.usuarioRepository.deleteUsuario(id);
+    console.log(47, result)
+    return result;
+  }
 }
-
-
 export { UsuariouseCase };

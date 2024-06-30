@@ -1,6 +1,5 @@
-
 import { prisma } from "../database/prisma-client";
-import { isAdminUpdate, statusUpdate, usuario, UsuarioRepository } from "../interfaces/usuario.interface";
+import {  usuario, UsuarioRepository } from "../interfaces/usuario.interface";
 
 class usuarioRepositoryPrisma implements UsuarioRepository {
    async findUsernameByEmail(email: string): Promise<string> {
@@ -29,38 +28,35 @@ class usuarioRepositoryPrisma implements UsuarioRepository {
          where: { email, senha },
       })
       return result;
-   }
-   
-   async updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null> {
+   }   
+   async updateByIdStatusBloqueio(id: number): Promise<usuario | null> {
+      id=Number(id)
       const result = await prisma.usuario.update({
-         where: { id },
-         data: {
-            status: data.status
-         },
-      });
+            where: { id },
+                 
+            data: {status: 'INATIVO'},
+         })
       return result;
-   }
-   async updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null> {
-      const result = await prisma.usuario.update({
-         where: { id },
-         data: {
-            isAdmin: data.isAdmin
-         },
-      });
+   }   
+   async updateByIdStatusLiberar(id: number): Promise<usuario | null> {
+      id=Number(id)
+          const result = await prisma.usuario.update({
+            where: { id },
+                 
+            data: {status: 'ATIVO'},
+         })
+            
       return result;
-   }
-   
+   }   
    async getAllUsuarios(): Promise<usuario[]> {
       return await prisma.usuario.findMany() 
    }
-   async  deleteUsuario(id: number): Promise< number >{
+   async  deleteUsuario(id: number): Promise<usuario>{
+      id=Number(id)
       const result = await prisma.usuario.delete({
-         where:{
-            id,
-         }
+         where:{id}
       })
-         return id; 
-   }
-   
+         return result; 
+   }   
 }
-export { usuarioRepositoryPrisma }; 
+export { usuarioRepositoryPrisma };

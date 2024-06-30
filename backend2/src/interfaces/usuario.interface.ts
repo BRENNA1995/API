@@ -1,5 +1,3 @@
-import { Comment } from "@prisma/client"
-
 export interface usuario {
    id: number,
    username: string,
@@ -8,16 +6,10 @@ export interface usuario {
    isAdmin?: boolean,
    status: string
 }
-
-export interface statusUpdate {
-   status: string,
-}
-export interface isAdminUpdate {
-   isAdmin: boolean,
-}
+ 
 export interface usuariofindByEmailSenha {
    email: string,
-   senha: string, 
+   senha: string,
 }
 export interface ParamsType {
    id: string
@@ -27,8 +19,8 @@ export interface UsuarioRepository {
    findByEmail(email: string): Promise<usuario | null>
    findUsernameByEmail(email: string): Promise<string >
    usuariofindByEmailSenha(email: string, senha: string ): Promise<usuario  | null>
-   updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null>
-   updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null>
+   updateByIdStatusBloqueio(id: number): Promise<usuario | null>
+   updateByIdStatusLiberar(id: number): Promise<usuario | null>
    getAllUsuarios(): Promise<usuario[]>
-   deleteUsuario(id: number): Promise<number >
+   deleteUsuario(id: number): Promise<usuario >
 }

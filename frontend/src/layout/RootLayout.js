@@ -4,12 +4,13 @@ import { Outlet } from "react-router-dom";
 import { DataContext } from "../context/DataContext";
 import styles from "./rootLayout.module.css";
 
-
 export function RootLayout() {
 	const [status, setStatus] = useState('Entrar')
 	const [login, setLogin] = useState(false)
 	const [newComment, setNewComment] = useState(0)
 	const [administrator, setAdministrator] = useState(true)
+	const [delUsuario, setDelUsuario]= useState(0)
+	const [ statusUsuario, setStatusUsuario] = useState(0)
 
 	const brand = { cursor: 'pointer' }
    
@@ -25,7 +26,7 @@ export function RootLayout() {
 		setLogin(false)
 	}
 	return (
-		<DataContext.Provider value={{ login, setLogin, newComment, setNewComment }}>
+		<DataContext.Provider value={{ login, setLogin, newComment, setNewComment, delUsuario, setDelUsuario , statusUsuario, setStatusUsuario }}>
 			<header className={styles.header}>
 				{login ?
 					<Link to={"/home"}><h1 style={{ ...brand }}>SUPER Tela</h1></Link>
