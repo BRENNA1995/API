@@ -13,13 +13,6 @@ export class MoviesService {
 			}
 		});
 	}
-	// static searchByMovieTitle(movieTitle) {
-	// 	return api.get("search/movie", {
-	// 		params: {
-	// 			query: movieTitle,
-	// 		}
-	// 	});
-	// }
 	static getComments(movieId) {
 		return api.get(`filmes/${movieId}/comentarios`);
 	}	
@@ -29,7 +22,14 @@ export class MoviesService {
 	static getUsuarios() {
 		return api.get(`usuarios/login`);
 	}	
-	static getUserConnected() {
-		return api.get('/connected')
-	} 
+
+	static getAllUsuarios() {
+		return api.get(`usuarios/all`);
+		
+	}
+	static deleteUsuario(usuarioId) {
+		return api.delete(`usuarios/${usuarioId}`);
+		
+	}
+	
 }

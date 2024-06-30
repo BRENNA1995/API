@@ -9,7 +9,7 @@ const server: FastifyInstance = fastify({
 })
 server.register(cors, {
    origin: '*',
-   methods: ['GET']
+   methods: ['GET','DELETE','POST', 'PUT']
 })
 server.register(filmRoutes, {
    prefix: '/filmes'

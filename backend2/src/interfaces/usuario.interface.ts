@@ -6,12 +6,9 @@ export interface usuario {
    email: string,
    senha: string,
    isAdmin?: boolean,
-   status: string,
-   connected: boolean
+   status: string
 }
-export interface userConnectedBoolean  {
-   connected: boolean
-}
+
 export interface statusUpdate {
    status: string,
 }
@@ -32,6 +29,6 @@ export interface UsuarioRepository {
    usuariofindByEmailSenha(email: string, senha: string ): Promise<usuario  | null>
    updateByIdStatus(id: number, data: statusUpdate): Promise<usuario | null>
    updateByIdAdmin(id: number, data: isAdminUpdate): Promise<usuario | null>
-   getUserConnected(email: string) : Promise<userConnectedBoolean | null>
-   updateUserConnected(email: string, data: userConnectedBoolean) : Promise<usuario|null>
+   getAllUsuarios(): Promise<usuario[]>
+   deleteUsuario(id: number): Promise<number >
 }

@@ -5,7 +5,7 @@ import axios from "axios";
 import React from "react";
 import useDataContext from "../../hooks/useDataContext";
 
-export function Login(sendDataConnect) {
+export function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();

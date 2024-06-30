@@ -4,6 +4,7 @@ import { Home } from "../pages/Home/Home";
 import { Start } from "../pages/Start/Start";
 import { Login } from "../pages/Login/Login";
 import { MovieDetails } from "../pages/movieDetails/MovieDetails";
+import {Administrator} from "../pages/Admin/Administrator"
 
 export const router = createBrowserRouter([
 	{
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
 			{
 				path: "/filmes/:movieId",
 				element: <MovieDetails />
-			}
+			},
+			{
+                path: "/administrator",
+                element: <Administrator />
+            }
 		]
 	}
 ])

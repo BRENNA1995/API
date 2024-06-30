@@ -29,12 +29,16 @@ export async function usuarioRoutes(fastify: FastifyInstance) {
         const response = await usuarioUsecase.create(req.body);
         reply.send(response);
     })
-    fastify.get<{ Body: string }>('/connected', async (req, reply) => {
-        const data = await usuarioUsecase.getUserConnected(req.body)
-        reply.send(data);
+    fastify.get('/all', async (req, reply) => {
+        console.log(33, 'get all')
+        const response = await usuarioUsecase.getAllUsuarios();
+        reply.send(response);
     })
-}
-function findUsernameByEmail(email: string) {
 
-    throw new Error("Function not implemented.");
+    fastify.delete<{ Body: usuario }>('/:id', async (req, reply) => {
+        const data = await usuarioUsecase.deleteUsuario(req.body.id);
+        reply.status(200);
+    })
+    
+    
 }
