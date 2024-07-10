@@ -20,9 +20,10 @@ export function MovieComments(props) {
     setStorageDataUsername(localStorage.getItem('userName'))
   }, [])
 
+
   const handleForm = () => {
     try {
-      axios.post(`http://localhost:3003/filmes/${props.idFilme}/comentarios/new`, {
+      axios.post(`process.env.HOSTNAME_API/filmes/${props.idFilme}/comentarios/new`, {
         filmeId: Number(data.filmeId),
         comment: String(data.comment),
         username: storageDataUsername,

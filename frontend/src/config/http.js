@@ -3,7 +3,7 @@ import { env } from "./env";
 const defaultEnv = 'production';
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3003/',
+    baseURL: 'process.env.HOSTNAME_API/',
     headers: {
         "Content-Type": "application/json",
       }, 
