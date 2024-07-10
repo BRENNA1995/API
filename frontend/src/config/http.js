@@ -1,7 +1,6 @@
 import axios from "axios";
 import { env } from "./env";
 const defaultEnv = 'production';
-require("dotenv").config();
 
 export const api = axios.create({
     baseURL: process.env.HOSTNAME_API,
