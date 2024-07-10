@@ -21,7 +21,6 @@ export function Start() {
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log(24,import.meta.env.HOSTNAME_API)
     try {
       api.post(`/usuarios/new`, {
         username: userName,
