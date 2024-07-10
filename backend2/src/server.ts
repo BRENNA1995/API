@@ -2,7 +2,11 @@ import fastify, { FastifyInstance } from "fastify";
 import { filmRoutes } from './routes/filme.routes'
 import { commentRoutes } from './routes/comment.routes'
 import { usuarioRoutes } from "./routes/usuario.routes";
+require("dotenv").config();
+
 import cors from "@fastify/cors"
+const port= process.env.PORT ?? 3003 
+
 
 const server: FastifyInstance = fastify({
    logger: true
@@ -21,9 +25,8 @@ server.register(commentRoutes, {
 server.register(usuarioRoutes, {
    prefix: '/usuarios'
 });
-server.listen(
-   {
-      port: 3003,
-   },
-   () => console.log('Server executing in port 3003'),
+server.listen({ port: process.env.PORT ?? '3003' }).then(() => {
+   console.log('Server is running')
+}
 );
+
