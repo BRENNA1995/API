@@ -59,6 +59,7 @@ export async function filmRoutes(fastify: FastifyInstance) {
                   createdAt: new Date(film.release_date)
                })
             })
+            console.log(results)
             reply.send(204)
          })
          .catch(err => {
