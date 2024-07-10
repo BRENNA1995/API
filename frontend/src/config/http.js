@@ -1,7 +1,7 @@
 import axios from "axios";
 import { env } from "./env";
 const defaultEnv = 'production';
-require("dotenv").config();
+//require("dotenv").config();
 
 export const api = axios.create({
     baseURL: process.env.REACT_APP_HOSTNAME_API,
