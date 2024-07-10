@@ -38,11 +38,9 @@ class UsuariouseCase {
   }
   async getAllUsuarios(): Promise<usuario[]> {
     return await this.usuarioRepository.getAllUsuarios()
-
   }
   async deleteUsuario(id: number): Promise<usuario> {
     const result = await this.usuarioRepository.deleteUsuario(id);
-    console.log(47, result)
     return result;
   }
 }

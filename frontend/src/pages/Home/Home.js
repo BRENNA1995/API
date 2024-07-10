@@ -8,7 +8,6 @@ export function Home() {
   const movies = useGetMovies();
   const searchResults = useSearchMovieByTitle(searchQuery);
 
-
   return (
     <article className="container">      
         <MoviesList movies={searchResults.length > 0 ? searchResults : movies} />     

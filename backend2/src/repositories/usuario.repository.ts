@@ -49,7 +49,11 @@ class usuarioRepositoryPrisma implements UsuarioRepository {
       return result;
    }   
    async getAllUsuarios(): Promise<usuario[]> {
-      return await prisma.usuario.findMany() 
+      return await prisma.usuario.findMany({
+         orderBy: {
+            username: 'asc'
+         }
+      }) 
    }
    async  deleteUsuario(id: number): Promise<usuario>{
       id=Number(id)

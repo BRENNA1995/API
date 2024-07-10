@@ -7,7 +7,6 @@ export function Administrator() {
     const [usuarios, setUsuarios] = useState([]);
     const { delUsuario, statusUsuario } = useDataContext()
 
-
     useEffect(() => {
         MoviesService.getAllUsuarios()
             .then(({ data }) => setUsuarios(data))

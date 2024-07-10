@@ -18,10 +18,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
          }
       }).then(async response => {
          const { results } = await response.json()
-         console.log(results)
          reply.status(200)
-      })
-      //salvar no banco
+      })  
       const data = await filmUsecase.findById(Number(req.params.id))
       reply.send(data)
    })
@@ -41,20 +39,6 @@ export async function filmRoutes(fastify: FastifyInstance) {
          reply.send(error)
       }
    })
-
-   // fastify.post<{ Body: FilmCreated }>('/api', async (req, reply) => {
-   //          filmUsecase.create({
-   //                id: req.body.id,
-   //                title: req.body.title,
-   //                sinopse: req.body.sinopse,
-   //                imdbVotes: req.body.imdbVotes,
-   //                imdbRating: req.body.imdbRating,
-   //                poster: req.body.poster,
-   //                createdAt: new Date(req.body.createdAt)
-   //                })
-   //                reply.status(204)
-   //          })
-
    fastify.post('/api', async (req, reply) => {
       await fetch('https://api.themoviedb.org/3/movie/popular', {
          headers: {
