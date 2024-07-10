@@ -3,7 +3,8 @@ declare global {
       interface ProcessEnv {
          API_TOKEN: string,
          DATABASE_URL: string,
-         PORT: number
+         PORT: number,
+         HOSTNAME: string
       }
    }
 }
