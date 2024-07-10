@@ -21,9 +21,9 @@ export function Start() {
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log(24,process.env.HOSTNAME_API)
+    console.log(24,import.meta.env.HOSTNAME_API)
     try {
-      axios.post(`/usuarios/new`, {
+      api.post(`/usuarios/new`, {
         username: userName,
         senha: userPassword,
         email: userEmail,
