@@ -1,9 +1,10 @@
 import axios from "axios";
 import { env } from "./env";
 const defaultEnv = 'production';
+require("dotenv").config();
 
 export const api = axios.create({
-    baseURL: 'api-backend-red.vercel.app',
+    baseURL: process.env.REACT_APP_HOSTNAME_API,
     headers: {
         "Content-Type": "application/json",
       }, 
