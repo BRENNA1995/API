@@ -3,6 +3,7 @@ import userImage from "../../images/user.png";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import useDataContext from "../../hooks/useDataContext";
+import {api} from "../../config/http"
 
 export function MovieComments(props) {
   const [data, setData] = useState({
@@ -23,7 +24,7 @@ export function MovieComments(props) {
 
   const handleForm = () => {
     try {
-      axios.post(`/filmes/${props.idFilme}/comentarios/new`, {
+      api.post(`/filmes/${props.idFilme}/comentarios/new`, {
         filmeId: Number(data.filmeId),
         comment: String(data.comment),
         username: storageDataUsername,

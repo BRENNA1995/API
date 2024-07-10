@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import React from "react";
 import useDataContext from "../../hooks/useDataContext";
+import {api} from "../../config/http"
 
 export function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -20,7 +21,7 @@ export function Login() {
   function handleOnSubmit(event) {
     event.preventDefault();    
     try {
-      axios.post(`/usuarios/login`, {
+      api.post(`/usuarios/login`, {
         senha: userPassword,
         email: userEmail,
       })
