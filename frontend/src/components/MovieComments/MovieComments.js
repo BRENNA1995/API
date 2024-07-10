@@ -23,7 +23,7 @@ export function MovieComments(props) {
 
   const handleForm = () => {
     try {
-      axios.post(`process.env.HOSTNAME_API/filmes/${props.idFilme}/comentarios/new`, {
+      axios.post(`/filmes/${props.idFilme}/comentarios/new`, {
         filmeId: Number(data.filmeId),
         comment: String(data.comment),
         username: storageDataUsername,

@@ -22,7 +22,7 @@ export function Start() {
   function handleOnSubmit(event) {
     event.preventDefault();
     try {
-      axios.post(`process.env.HOSTNAME_API/usuarios/new`, {
+      axios.post(`/usuarios/new`, {
         username: userName,
         senha: userPassword,
         email: userEmail,

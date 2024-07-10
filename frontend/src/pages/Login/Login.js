@@ -20,7 +20,7 @@ export function Login() {
   function handleOnSubmit(event) {
     event.preventDefault();    
     try {
-      axios.post(`process.env.HOSTNAME_API/usuarios/login`, {
+      axios.post(`/usuarios/login`, {
         senha: userPassword,
         email: userEmail,
       })
