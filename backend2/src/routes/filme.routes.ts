@@ -39,6 +39,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
          reply.send(error)
       }
    })
+
+
    fastify.post('/api', async (req, reply) => {
       await fetch('https://api.themoviedb.org/3/movie/popular', {
          headers: {
@@ -49,7 +51,7 @@ export async function filmRoutes(fastify: FastifyInstance) {
          .then(async response => {
             const { results } = await response.json()
             results?.forEach(async (film: FilmApi) => {
-               await filmUsecase.create({
+               const postegreeFilme= await filmUsecase.create({
                   id: film.id,
                   title: film.title,
                   sinopse: film.overview,
@@ -58,8 +60,8 @@ export async function filmRoutes(fastify: FastifyInstance) {
                   poster: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
                   createdAt: new Date(film.release_date)
                })
+               console.log(postegreeFilme)
             })
-            console.log(results)
             reply.send(204)
          })
          .catch(err => {
