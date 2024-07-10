@@ -58,9 +58,12 @@ export async function filmRoutes(fastify: FastifyInstance) {
                   poster: `https://image.tmdb.org/t/p/w300${film.poster_path}`,
                   createdAt: new Date(film.release_date)
                })
-            });
-            reply.status(204)
+            })
+            reply.send(204)
          })
+         .catch(err => {
+            console.log(err)
+        })
    }
    )
 }
