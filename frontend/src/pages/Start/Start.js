@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { styles } from "./start.module.css";
-import axios from "axios";
+import {api} from "../../config/http";
 
 export function Start() {
   const [userName, setUserName] = useState("");
