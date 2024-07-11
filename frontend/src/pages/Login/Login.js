@@ -77,10 +77,7 @@ export function Login() {
           Continuar
         </button>
       </form>
-      { loading ?? (
         <div class="progress"><div class="indeterminate"></div></div>
-      ) 
-      }
     </div>
   );
 }
