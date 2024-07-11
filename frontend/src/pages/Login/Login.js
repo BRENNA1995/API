@@ -79,7 +79,7 @@ export function Login() {
       </form>
       { loading ? (
         <div class="progress"><div class="indeterminate" style="width: 40%"></div></div>
-      ) : none 
+      ) : <div></div> 
       }
     </div>
   );
