@@ -7,6 +7,7 @@ import useDataContext from "../../hooks/useDataContext";
 import {api} from "../../config/http"
 
 export function Login() {
+  const [loading, setLoading] = useState(false); 
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
@@ -16,10 +17,10 @@ export function Login() {
     color: "#393960",
     textAlign: "center",
   };
-
   const { setLogin } = useDataContext()
   function handleOnSubmit(event) {
-    event.preventDefault();    
+    event.preventDefault();
+    setLoading(true)    
     try {
       api.post(`/usuarios/login`, {
         senha: userPassword,
@@ -46,8 +47,11 @@ export function Login() {
         console.error('Outro erro:', error.message);
       }
     }
-    setUserEmail("");
-    setUserPassword("");
+    finally {
+      setLoading(false)      
+      setUserEmail("");
+      setUserPassword("");
+    }
   }
   return (
     <div className="container">
@@ -73,6 +77,10 @@ export function Login() {
           Continuar
         </button>
       </form>
+      { loading ?? (
+        <div class="progress"><div class="indeterminate"></div></div>
+      ) 
+      }
     </div>
   );
 }
