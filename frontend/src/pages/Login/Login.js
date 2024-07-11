@@ -48,7 +48,7 @@ export function Login() {
       }
     }
     finally {
-      setLoading(true)      
+      setLoading(false)      
       setUserEmail("");
       setUserPassword("");
     }
@@ -77,7 +77,10 @@ export function Login() {
           Continuar
         </button>
       </form>
-        <div class="progress"><div class="indeterminate"></div></div>
+      { loading ? (
+        <div class="progress"><div class="indeterminate" style="width: 40%"></div></div>
+      ) : none 
+      }
     </div>
   );
 }
