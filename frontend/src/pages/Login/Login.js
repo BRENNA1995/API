@@ -48,7 +48,7 @@ export function Login() {
       }
     }
     finally {
-      setLoading(false)      
+      setLoading(true)      
       setUserEmail("");
       setUserPassword("");
     }
