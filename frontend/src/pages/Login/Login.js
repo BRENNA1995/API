@@ -19,8 +19,8 @@ export function Login() {
   };
   const { setLogin } = useDataContext()
   function handleOnSubmit(event) {
-    event.preventDefault();
     setLoading(true)    
+    event.preventDefault();
     try {
       api.post(`/usuarios/login`, {
         senha: userPassword,
